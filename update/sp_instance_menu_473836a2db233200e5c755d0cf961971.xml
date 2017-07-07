@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_instance_menu">
+    <sp_instance_menu action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <class_name/>
+        <color>default</color>
+        <css/>
+        <glyph/>
+        <id/>
+        <order>1</order>
+        <short_description/>
+        <size>md</size>
+        <sp_column/>
+        <sp_widget display_value="Mod Menu">b94972e2db233200e5c755d0cf9619be</sp_widget>
+        <sys_class_name>sp_instance_menu</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-06-27 13:32:28</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>473836a2db233200e5c755d0cf961971</sys_id>
+        <sys_mod_count>10</sys_mod_count>
+        <sys_name>Navigation</sys_name>
+        <sys_package display_value="Mod List" source="x_134426_mod_list">2f7f9f0fdbd33200e5c755d0cf961978</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
+        <sys_update_name>sp_instance_menu_473836a2db233200e5c755d0cf961971</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-06-29 19:42:10</sys_updated_on>
+        <title>Navigation</title>
+        <url/>
+        <widget_parameters/>
+    </sp_instance_menu>
+    <sys_translated_text action="delete_multiple" query="documentkey=473836a2db233200e5c755d0cf961971"/>
+</record_update>

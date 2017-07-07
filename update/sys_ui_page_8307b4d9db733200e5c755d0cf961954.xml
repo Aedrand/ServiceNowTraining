@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <client_script/>
+        <description/>
+        <direct>false</direct>
+        <endpoint>x_134426_mod_list_Recommended Hardware.do</endpoint>
+        <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+	<style>
+		.container {
+			display:grid;
+			grid-template-columns: 50% 50%;
+		}
+	</style>
+	<div class="container">
+		<g:evaluate var="jvar_program_bundle" object="true">
+			var id = RP.getParameterValue('sysparm_id');
+			var progRecord = new GlideRecord('x_134426_mod_list_all_programs');
+				progRecord.get(id);
+			var bundleRecord = new GlideRecord('cmdb_model');
+			bundleRecord.get('sys_id', progRecord.getValue('recommended_hardware'));
+			bundleRecord;
+		</g:evaluate>
+	
+		<g:evaluate var="jvar_bundle_main" object="true">
+			var mainRecord = new GlideRecord('cmdb_m2m_model_component');
+			mainRecord.addQuery('parent', bundleRecord.getValue('sys_id'));
+			mainRecord.addQuery('master', true);
+			mainRecord.query();
+			mainRecord.next();
+		
+			var mainRef = new GlideRecord('cmdb_model');
+			mainRef.get('sys_id', mainRecord.getValue('child'));
+			mainRef;
+		</g:evaluate>
+		
+		<g:evaluate var="jvar_bundle_supports" object="true">
+			var supportRecord = new GlideRecord('cmdb_m2m_model_component');
+			supportRecord.addQuery('parent', bundleRecord.getValue('sys_id'));
+			supportRecord.addQuery('master', false);
+			supportRecord.query();
+			supportRecord.next();
+		
+			var supportRef = new GlideRecord('cmdb_model');
+			var queryString = supportRecord.getValue('child');
+			while(supportRecord.next()) {
+				queryString += ',' + supportRecord.getValue('child');
+			}
+			supportRef.addQuery('sys_id','IN',queryString);
+			supportRef.query();
+			supportRef;
+		</g:evaluate>
+
+		<g:evaluate var="jvar_my_hardware" object="true">
+			var myHWRecord = new GlideRecord('alm_hardware');
+			myHWRecord.addQuery('install_status', 1);
+			myHWRecord.addQuery('assigned_to', gs.getUserID());
+			myHWRecord.query();
+			myHWRecord.next();
+
+			var myModelRecord = new GlideRecord('cmdb_model');
+			var queryString2 = myHWRecord.getValue('model');
+			while(myHWRecord.next()) {
+				queryString2 += ',' + myHWRecord.getValue('model');
+			}
+
+			myModelRecord.addQuery('sys_id','IN',queryString2);
+			myModelRecord.query();
+			myModelRecord;
+		</g:evaluate>
+
+		<div style="grid-column:1/2">
+			<h2>Recommended Hardware</h2>
+			<h4>${jvar_program_bundle.getValue('display_name')}</h4>
+			<input type="checkbox"/><a href="${jvar_bundle_main.getLink(false)}"> 
+			&#160; ${jvar_bundle_main.getValue('display_name')}</a>
+			<br></br>
+			<j:while test="${jvar_bundle_supports.next()}">
+				<input type="checkbox"/> &#160; <a href="${jvar_bundle_supports.getLink(false)}">
+				${jvar_bundle_supports.getValue('display_name')}</a>
+				<br></br>
+			</j:while>
+			<input type="submit" value="Request Checked Hardware"/>
+		</div>
+
+		<div style="grid-column: 2/3">
+			<h2>Your Hardware</h2>
+			<h4>Hardware Assigned to ${gs.getUserDisplayName()}</h4>
+			<j:choose>	
+				<j:when test="${!jvar_my_hardware.hasNext()}">
+					<p>You have no hardware assigned to you.</p>
+				</j:when>
+				<j:otherwise>
+					<j:while test="${jvar_my_hardware.next()}">
+						<a href="${jvar_my_hardware.getLink(false)}">
+							${jvar_my_hardware.getValue('display_name')}</a>
+					</j:while>
+				</j:otherwise>
+			</j:choose>
+		</div>
+	</div>
+</j:jelly>]]></html>
+        <name>Recommended Hardware</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-07-05 17:14:18</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>8307b4d9db733200e5c755d0cf961954</sys_id>
+        <sys_mod_count>265</sys_mod_count>
+        <sys_name>Recommended Hardware</sys_name>
+        <sys_package display_value="Mod List" source="x_134426_mod_list">2f7f9f0fdbd33200e5c755d0cf961978</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
+        <sys_update_name>sys_ui_page_8307b4d9db733200e5c755d0cf961954</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-07-07 18:17:02</sys_updated_on>
+    </sys_ui_page>
+</record_update>

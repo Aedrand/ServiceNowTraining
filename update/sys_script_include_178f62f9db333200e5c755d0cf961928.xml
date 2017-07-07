@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_134426_mod_list.recommendUtils</api_name>
+        <client_callable>false</client_callable>
+        <description>Checks if the current modification is already being recommended by the current user.</description>
+        <name>recommendUtils</name>
+        <script><![CDATA[//Script Include to manage common operations around the recommendation
+//functionality.
+var recommendUtils = Class.create();
+recommendUtils.prototype = {
+	//Initialize. Takes in target program sys_id. Sets attributes progID
+	//and recRecord.
+    initialize: function(programID) {
+		this.progID = programID;
+		this.recRecord = new GlideRecord('x_134426_mod_list_recommendations');
+		this.recRecord.addQuery('program', this.progID);
+		this.recRecord.addQuery('user', gs.getUserID());
+		this.recRecord.query();
+    },
+	
+	//Checks whether or not a record matching the target program and current
+	//user already exists in table.
+	existsCheck: function() {
+		if(!this.recRecord.hasNext()) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	},
+	
+	//If a record already exists in the table, this method returns it.
+	existingRecord: function() {
+		if(this.existsCheck()) {
+			return false;
+		}
+		else {
+			return this.recRecord;
+		}
+	},
+	
+	//Returns the number of recommendation records with the target 
+	//program as 'program'.
+	count: function() {
+		var numberRec = new GlideRecord('x_134426_mod_list_recommendations');
+		numberRec.get('program', this.progID);
+		return numberRec.getRowCount();
+	},
+
+    type: 'recommendUtils'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-07-07 15:26:17</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>178f62f9db333200e5c755d0cf961928</sys_id>
+        <sys_mod_count>25</sys_mod_count>
+        <sys_name>recommendUtils</sys_name>
+        <sys_package display_value="Mod List" source="x_134426_mod_list">2f7f9f0fdbd33200e5c755d0cf961978</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
+        <sys_update_name>sys_script_include_178f62f9db333200e5c755d0cf961928</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-07-07 17:44:17</sys_updated_on>
+    </sys_script_include>
+</record_update>

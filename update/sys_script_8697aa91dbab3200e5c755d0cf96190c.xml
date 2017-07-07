@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>true</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_134426_mod_list_all_mods</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Update Mod Number</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+	//Create GlideRecord to store target program.
+	var targetRecord = new GlideRecord('x_134426_mod_list_all_programs');
+	targetRecord.get(current.getValue('program'));
+	
+	//Create GlideRecord to find and store all mods that are for the
+	//targeted program.
+	var numberRecord = new GlideRecord('x_134426_mod_list_all_mods');
+	numberRecord.get('program', current.program);
+	
+	//If the program is what's being changed, the record of the old
+	//program must also be updated.
+	if(current.program.changes() && !current.isNewRecord() && previous.program != '') {
+		
+		//Create GlideRecord to store old program value.
+		var oldTarget = new GlideRecord('x_134426_mod_list_all_programs');
+		oldTarget.get(previous.getValue('program'));
+		
+		//Create new GlideRecord and find current mod count of old program.
+		//Update 'number_of_mods' field.
+		var oldRecord = new GlideRecord('x_134426_mod_list_all_mods');
+		oldRecord.get('program', previous.program);
+		oldTarget.setValue('number_of_mods', oldRecord.getRowCount());
+		oldTarget.update();
+	}
+
+	//Update 'number_of_mods' field for new value.
+	targetRecord.setValue('number_of_mods', numberRecord.getRowCount());
+	targetRecord.update();
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-06-23 15:16:06</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>8697aa91dbab3200e5c755d0cf96190c</sys_id>
+        <sys_mod_count>20</sys_mod_count>
+        <sys_name>Update Mod Number</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Mod List" source="x_134426_mod_list">2f7f9f0fdbd33200e5c755d0cf961978</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
+        <sys_update_name>sys_script_8697aa91dbab3200e5c755d0cf96190c</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-07-07 14:33:56</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=8697aa91dbab3200e5c755d0cf96190c"/>
+</record_update>

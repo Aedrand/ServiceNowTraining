@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <client_script/>
+        <controller_as>c</controller_as>
+        <css>.sp-tagline-color{
+  color: #414141;
+}
+
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list>title,short_description</field_list>
+        <has_preview>false</has_preview>
+        <id/>
+        <internal>false</internal>
+        <link/>
+        <name>Mod Homepage Search</name>
+        <option_schema>[{"name":"typeahead_search","default_value":"{title: 'How can we help?', size: 'lg', color: 'default'}","label":"Typeahead Search","type":"string"}]</option_schema>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[data.typeAheadSearch = $sp.getWidget('typeahead-search', options.typeahead_search);]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-06-26 20:08:06</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>3449cbdadbef3200e5c755d0cf961910</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>Mod Homepage Search</sys_name>
+        <sys_package display_value="Mod List" source="x_134426_mod_list">2f7f9f0fdbd33200e5c755d0cf961978</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
+        <sys_update_name>sp_widget_3449cbdadbef3200e5c755d0cf961910</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-06-30 18:50:57</sys_updated_on>
+        <template><![CDATA[<div id="homepage-search" class="hidden-xs wrapper-xl">
+  <div class="wrapper-xl">
+  	<h1 class="text-center text-4x m-b-lg sp-tagline-color" ng-bind="options.title"></h1>
+  	<h4 ng-if="options.short_description" class="text-center m-b-lg sp-tagline-color" ng-bind="options.short_description"></h4>
+  	<sp-widget widget="data.typeAheadSearch" />
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

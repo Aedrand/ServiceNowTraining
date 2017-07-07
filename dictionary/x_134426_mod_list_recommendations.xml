@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Recommendations" max_length="40" name="x_134426_mod_list_recommendations" type="collection">
+        <element label="Date Recommended" max_length="40" name="date_recommended" type="glide_date"/>
+        <element label="Program" max_length="32" name="program" reference="x_134426_mod_list_all_mods" type="reference"/>
+        <element label="User" max_length="32" name="user" reference="sys_user" type="reference"/>
+        <index name="index">
+            <element name="program"/>
+        </index>
+        <index name="index2">
+            <element name="user"/>
+        </index>
+    </element>
+</database>

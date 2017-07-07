@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_instance">
+    <sp_instance action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <class_name/>
+        <color>default</color>
+        <css/>
+        <glyph/>
+        <id/>
+        <order>0</order>
+        <short_description/>
+        <size>md</size>
+        <sp_column display_value="1">71b4676bdba33200e5c755d0cf961932</sp_column>
+        <sp_widget display_value="HTML">8679ef89cb21120000f8d856634c9c4f</sp_widget>
+        <sys_class_name>sp_instance</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-06-30 19:20:54</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>d8d46b6bdba33200e5c755d0cf961926</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Mod List" source="x_134426_mod_list">2f7f9f0fdbd33200e5c755d0cf961978</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
+        <sys_update_name>sp_instance_d8d46b6bdba33200e5c755d0cf961926</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-06-30 19:23:16</sys_updated_on>
+        <title/>
+        <url/>
+        <widget_parameters><![CDATA[{
+	"html": {
+		"value": "<h2>Denied Requests</h2>\n<p>Denied requests awaiting deletion.</p>\n<p>Deletion of denied requests occurs every 48 hours.</p>",
+		"displayValue": "<h2>Denied Requests</h2>\n<p>Denied requests awaiting deletion.</p>\n<p>Deletion of denied requests occurs every 48 hours.</p>"
+	}
+}]]></widget_parameters>
+    </sp_instance>
+    <sys_translated_text action="delete_multiple" query="documentkey=d8d46b6bdba33200e5c755d0cf961926"/>
+</record_update>

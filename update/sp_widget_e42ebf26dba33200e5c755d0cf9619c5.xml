@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <client_script><![CDATA[function($scope, spUtil) {
+  /* widget controller */
+  var c = this;
+	
+	$scope.className = 'outer';
+	this.hideDiv = function(){
+		$scope.m = true;
+	};
+	
+	//TODO: Really not a great solution to the
+	//- issue of ng-scope and assigning classes.
+	//- Find a better way to reference.
+	//On click function for the widget display
+	//divs. Finds angular element using $index
+	//as $index is used in setting the div ids.
+	this.showRecord = function(index) {
+		var indexS = '#repeat'+index;
+		var target = angular.element(document.querySelector(indexS));
+		if(target.attr('id') == 'repeat'+index ) {
+			if(target.attr('class') == 'blocklink ng-scope') {
+				target.addClass('full');
+				target.removeClass('blocklink');
+				$scope.show = true;
+				return;
+			}
+			if(target.attr('class') == 'ng-scope full') {
+				target.addClass('blocklink');
+				target.removeClass('full');
+				var form = angular.element(document.querySelector('formDisplay'));
+				form.remove();
+				return;
+			}
+			//Third statement necessary due to placement
+			//of class names after adding and removing.
+			//Find alternative to string matching.
+			if(target.attr('class') == 'ng-scope blocklink') {
+				target.addClass('full');
+				target.removeClass('blocklink');
+				$scope.show = true;
+				return;
+			}
+		}
+	}
+	
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.outside {
+	display:flex;
+  justify-content:center;
+  flex-flow: row wrap;
+}
+
+.outer {
+  max-width:20%;
+  margin:2%;
+  flex: 1 10%;
+	//min-height:100%;
+  //min-width:100%;
+  display:flex;
+  flex-flow: row wrap;
+	border:1.5px solid black;
+  border-radius:1em;
+  transition: all linear 0.5s;
+}
+
+.outer:hover {
+	color: #fff;
+  background-color: #909090;
+}
+
+.full:hover {
+  
+	color: #fff;
+  background-color: #909090;
+}
+
+.recommendations {
+  flex: 1 50%;
+}
+
+h3{
+  vertical-align: text-top;
+  flex: 1 50%;
+  max-width:50%;
+  font-size:1.8vw;
+  padding:3%;
+}
+
+h2{
+  vertical-align: text-top;
+  flex: 1 50%;
+  text-align:right;
+}
+
+.recText {
+	font-size: 30%;
+}
+
+.blocklink {
+ 	max-width:20%;
+  margin:2%;
+  flex: 1 10%;
+	//min-height:100%;
+  //min-width:100%;
+  display:flex;
+  flex-flow: row wrap;
+	border:1.5px solid black;
+  border-radius:1em;
+  transition: all linear 0.5s;
+}
+
+a {
+  text-decoration:none;
+  color:#909090;
+}
+
+sp-widget {
+  min-width:100%;
+  width:100%;
+	flex:3 100%;
+}
+
+.full {
+  max-width:100%;
+  margin:2%;
+  flex: 1 100%;
+  min-width:100%;
+	//min-height:100%;
+  display:flex;
+  flex-flow: row wrap;
+	border:1.5px solid black;
+  border-radius:1em;
+  transition: all linear 0.5s;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>test_widget</id>
+        <internal>false</internal>
+        <link/>
+        <name>test widget</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+	
+	var gr = new GlideRecord('x_134426_mod_list_all_mods');
+	gr.addQuery('submitted_by','=',gs.getUserID());
+	gr.query();
+	
+	data.records = [];
+	var count = 0;
+	while(gr.next()) {
+		data.records[count] = {
+			name:gr.getValue('name'),
+			program:gr.getElement('program').getDisplayValue(),
+			recs:gr.getValue('recommendations'),
+			sys_id:gr.getValue('sys_id'),
+			table:gr.getTableName()
+		};
+		count++;
+	}
+	
+	data.records.sort(function(a,b) {
+		return b.recs - a.recs;
+	});
+	
+	data.form = $sp.getWidget('widget-form');
+	
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-06-27 18:37:35</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>e42ebf26dba33200e5c755d0cf9619c5</sys_id>
+        <sys_mod_count>259</sys_mod_count>
+        <sys_name>test widget</sys_name>
+        <sys_package display_value="Mod List" source="x_134426_mod_list">2f7f9f0fdbd33200e5c755d0cf961978</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
+        <sys_update_name>sp_widget_e42ebf26dba33200e5c755d0cf9619c5</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-06-29 17:54:35</sys_updated_on>
+        <template><![CDATA[<div class="outside" ng-init="show= false">
+  <a id="repeat{{$index}}" ng-click="c.showRecord($index)" ng-repeat="r in data.records" class="blocklink" href="modlist?id=my_modifications&sl_sys_id={{r.sys_id}}&sl_table={{r.table}}">
+  	<div> 
+    	<h3>{{r.name}}</h3>
+    	<h2>{{r.recs}}<span class="recText">Recommendations</span></h2>
+ 			<p>{{r.program}}{{m}}{{$index}}</p>
+  	</div>
+  </a>
+</div>]]></template>
+    </sp_widget>
+</record_update>

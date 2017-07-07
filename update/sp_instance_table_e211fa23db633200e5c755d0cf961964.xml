@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_instance_table">
+    <sp_instance_table action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <class_name/>
+        <color>default</color>
+        <css/>
+        <display_field/>
+        <field_list/>
+        <filter table="sys_user_group">GOTOnameLIKEModList<item endquery="false" field="name" goto="true" newquery="false" operator="LIKE" or="false" value="ModList"/>
+        </filter>
+        <glyph/>
+        <id/>
+        <maximum_entries>5</maximum_entries>
+        <order>0</order>
+        <order_by/>
+        <order_direction>asc</order_direction>
+        <short_description/>
+        <size>md</size>
+        <sp_column display_value="1">083332a3db633200e5c755d0cf9619b2</sp_column>
+        <sp_page/>
+        <sp_widget display_value="Data Table from Instance Definition">38058ff1cb11020000f8d856634c9c8c</sp_widget>
+        <sys_class_name>sp_instance_table</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-06-30 15:34:58</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>e211fa23db633200e5c755d0cf961964</sys_id>
+        <sys_mod_count>8</sys_mod_count>
+        <sys_name>Groups</sys_name>
+        <sys_package display_value="Mod List" source="x_134426_mod_list">2f7f9f0fdbd33200e5c755d0cf961978</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
+        <sys_update_name>sp_instance_table_e211fa23db633200e5c755d0cf961964</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-06-30 15:44:21</sys_updated_on>
+        <table>sys_user_group</table>
+        <title>Groups</title>
+        <url/>
+        <widget_parameters/>
+    </sp_instance_table>
+    <sys_translated_text action="delete_multiple" query="documentkey=e211fa23db633200e5c755d0cf961964"/>
+</record_update>

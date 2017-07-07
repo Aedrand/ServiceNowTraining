@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_security_acl">
+    <sys_security_acl action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <admin_overrides>true</admin_overrides>
+        <advanced>true</advanced>
+        <condition/>
+        <description>Allow write for all fields in x_134426_mod_list_all_mods, if the ACL script returns true.</description>
+        <name>x_134426_mod_list_all_mods.*</name>
+        <operation display_value="write">write</operation>
+        <script><![CDATA[//If the user is either an admin, or the creator of the file, they are allowed access
+//otherwise, deny access.
+if(gs.hasRole('x_134426_mod_list.admin') || current.submitted_by == gs.getUserID()
+  || current.isNewRecord()) {
+	answer = true;
+   }
+else {
+	answer = false;
+}]]></script>
+        <sys_class_name>sys_security_acl</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-06-22 20:58:59</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>c47e26c5dbe33200e5c755d0cf9619d9</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>x_134426_mod_list_all_mods.*</sys_name>
+        <sys_package display_value="Mod List" source="x_134426_mod_list">2f7f9f0fdbd33200e5c755d0cf961978</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
+        <sys_update_name>sys_security_acl_c47e26c5dbe33200e5c755d0cf9619d9</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-06-23 19:50:14</sys_updated_on>
+        <type display_value="record">record</type>
+    </sys_security_acl>
+</record_update>

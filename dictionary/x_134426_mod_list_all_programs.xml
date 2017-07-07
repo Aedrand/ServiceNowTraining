@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="All Programs" max_length="40" name="x_134426_mod_list_all_programs" text_index="true" type="collection">
+        <element label="Available" max_length="40" name="available" type="boolean"/>
+        <element label="Developer" mandatory="true" max_length="100" name="developer" type="string"/>
+        <element label="Name" mandatory="true" max_length="100" name="name" type="string"/>
+        <element default="0" label="Number of Mods" max_length="40" name="number_of_mods" read_only="true" type="float"/>
+        <element label="Recommended Hardware" max_length="32" name="recommended_hardware" reference="cmdb_model" reference_qual="bundle=true^EQ" reference_qual_condition="bundle=true^EQ" type="reference"/>
+        <element label="Release Date" mandatory="true" max_length="40" name="release_date" type="glide_date"/>
+        <element default="javascript:current.getTableName();" dynamic_default_value="b5cb83a85f220100a9ad2572f2b4773c" label="Class" max_length="80" name="sys_class_name" type="sys_class_name" use_dynamic_default="true"/>
+        <element attributes="edge_encryption_enabled=true" label="Description" mandatory="true" max_length="4000" name="u_description" type="string_full_utf8"/>
+        <element attributes="no_sort=true,slushbucket_ref_no_expand=true" label="New List" max_length="1024" name="u_glide_list_2" reference="x_134426_mod_list_all_mods" type="glide_list"/>
+        <element label="Recommending" max_length="40" name="u_recommending_program" type="boolean"/>
+        <index name="index">
+            <element name="recommended_hardware"/>
+        </index>
+    </element>
+</database>

@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update node_type="sys_portal_page" unload_date="2017-07-07 18:39:26">
+    <sys_portal_page action="INSERT_OR_UPDATE">
+        <layout display_value="layout_2_across">f6defafa0a0a0b12000d5016bd12ff06</layout>
+        <order/>
+        <read_roles/>
+        <roles/>
+        <selectable>false</selectable>
+        <sys_class_name>sys_portal_page</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-06-26 15:17:19</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>2af50692db6f3200e5c755d0cf9619e5</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>My  Self Service</sys_name>
+        <sys_overrides/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-06-26 15:17:21</sys_updated_on>
+        <title>My  Self Service</title>
+        <user display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</user>
+        <view/>
+        <related_items_node>
+            <sys_portal action="INSERT_OR_UPDATE">
+                <dropzone>dropzone2</dropzone>
+                <offset>0</offset>
+                <page display_value="My  Self Service">2af50692db6f3200e5c755d0cf9619e5</page>
+                <summary/>
+                <sys_created_by>admin</sys_created_by>
+                <sys_created_on>2017-07-06 21:20:04</sys_created_on>
+                <sys_id>10a9fae1dbf33200e5c755d0cf961961</sys_id>
+                <sys_mod_count>0</sys_mod_count>
+                <sys_updated_by>admin</sys_updated_by>
+                <sys_updated_on>2017-07-06 21:20:04</sys_updated_on>
+                <related_items_node>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>renderer_id</name>
+                        <portal_section display_value="Created 07-06-2017 17:20:04">10a9fae1dbf33200e5c755d0cf961961</portal_section>
+                        <sys_created_by>admin</sys_created_by>
+                        <sys_created_on>2017-07-06 21:20:04</sys_created_on>
+                        <sys_id>18a9fae1dbf33200e5c755d0cf961961</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>admin</sys_updated_by>
+                        <sys_updated_on>2017-07-06 21:20:04</sys_updated_on>
+                        <value>a066bb690a0a0aa300d40d0cce7ed94f</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>renderer</name>
+                        <portal_section display_value="Created 07-06-2017 17:20:04">10a9fae1dbf33200e5c755d0cf961961</portal_section>
+                        <sys_created_by>admin</sys_created_by>
+                        <sys_created_on>2017-07-06 21:20:04</sys_created_on>
+                        <sys_id>90a9fae1dbf33200e5c755d0cf961961</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>admin</sys_updated_by>
+                        <sys_updated_on>2017-07-06 21:20:04</sys_updated_on>
+                        <value>com.glide.ui.portal.RenderJavascript</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>type</name>
+                        <portal_section display_value="Created 07-06-2017 17:20:04">10a9fae1dbf33200e5c755d0cf961961</portal_section>
+                        <sys_created_by>admin</sys_created_by>
+                        <sys_created_on>2017-07-06 21:20:04</sys_created_on>
+                        <sys_id>94a9fae1dbf33200e5c755d0cf961962</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>admin</sys_updated_by>
+                        <sys_updated_on>2017-07-06 21:20:04</sys_updated_on>
+                        <value>news</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>title</name>
+                        <portal_section display_value="Created 07-06-2017 17:20:04">10a9fae1dbf33200e5c755d0cf961961</portal_section>
+                        <sys_created_by>admin</sys_created_by>
+                        <sys_created_on>2017-07-06 21:20:04</sys_created_on>
+                        <sys_id>9ca9fae1dbf33200e5c755d0cf961961</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>admin</sys_updated_by>
+                        <sys_updated_on>2017-07-06 21:20:04</sys_updated_on>
+                        <value>News</value>
+                    </sys_portal_preferences>
+                </related_items_node>
+            </sys_portal>
+            <sys_portal action="INSERT_OR_UPDATE">
+                <dropzone>dropzone2</dropzone>
+                <offset>1</offset>
+                <page display_value="My  Self Service">2af50692db6f3200e5c755d0cf9619e5</page>
+                <summary/>
+                <sys_created_by>admin</sys_created_by>
+                <sys_created_on>2017-07-06 21:20:04</sys_created_on>
+                <sys_id>10a9fae1dbf33200e5c755d0cf961963</sys_id>
+                <sys_mod_count>0</sys_mod_count>
+                <sys_updated_by>admin</sys_updated_by>
+                <sys_updated_on>2017-07-06 21:20:04</sys_updated_on>
+                <related_items_node>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>topic</name>
+                        <portal_section display_value="Created 07-06-2017 17:20:04">10a9fae1dbf33200e5c755d0cf961963</portal_section>
+                        <sys_created_by>admin</sys_created_by>
+                        <sys_created_on>2017-07-06 21:20:04</sys_created_on>
+                        <sys_id>18a9fae1dbf33200e5c755d0cf961963</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>admin</sys_updated_by>
+                        <sys_updated_on>2017-07-06 21:20:04</sys_updated_on>
+                        <value>FAQ</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>renderer</name>
+                        <portal_section display_value="Created 07-06-2017 17:20:04">10a9fae1dbf33200e5c755d0cf961963</portal_section>
+                        <sys_created_by>admin</sys_created_by>
+                        <sys_created_on>2017-07-06 21:20:04</sys_created_on>
+                        <sys_id>90a9fae1dbf33200e5c755d0cf961963</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>admin</sys_updated_by>
+                        <sys_updated_on>2017-07-06 21:20:04</sys_updated_on>
+                        <value>com.glideapp.knowledge.RenderKnowledge</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>current_page</name>
+                        <portal_section display_value="Created 07-06-2017 17:20:04">10a9fae1dbf33200e5c755d0cf961963</portal_section>
+                        <sys_created_by>admin</sys_created_by>
+                        <sys_created_on>2017-07-06 21:20:04</sys_created_on>
+                        <sys_id>94a9fae1dbf33200e5c755d0cf961964</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>admin</sys_updated_by>
+                        <sys_updated_on>2017-07-06 21:20:04</sys_updated_on>
+                        <value>4da11b86c611229701f1d31a48c9245d</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>title</name>
+                        <portal_section display_value="Created 07-06-2017 17:20:04">10a9fae1dbf33200e5c755d0cf961963</portal_section>
+                        <sys_created_by>admin</sys_created_by>
+                        <sys_created_on>2017-07-06 21:20:04</sys_created_on>
+                        <sys_id>9ca9fae1dbf33200e5c755d0cf961963</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>admin</sys_updated_by>
+                        <sys_updated_on>2017-07-06 21:20:04</sys_updated_on>
+                        <value>FAQ</value>
+                    </sys_portal_preferences>
+                </related_items_node>
+            </sys_portal>
+            <sys_portal action="INSERT_OR_UPDATE">
+                <dropzone>dropzone2</dropzone>
+                <offset>2</offset>
+                <page display_value="My  Self Service">2af50692db6f3200e5c755d0cf9619e5</page>
+                <summary/>
+                <sys_created_by>admin</sys_created_by>
+                <sys_created_on>2017-07-06 21:20:04</sys_created_on>
+                <sys_id>10a9fae1dbf33200e5c755d0cf961965</sys_id>
+                <sys_mod_count>0</sys_mod_count>
+                <sys_updated_by>admin</sys_updated_by>
+                <sys_updated_on>2017-07-06 21:20:04</sys_updated_on>
+                <related_items_node>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>title</name>
+                        <portal_section display_value="Created 07-06-2017 17:20:04">10a9fae1dbf33200e5c755d0cf961965</portal_section>
+                        <sys_created_by>admin</sys_created_by>
+                        <sys_created_on>2017-07-06 21:20:04</sys_created_on>
+                        <sys_id>10a9fae1dbf33200e5c755d0cf961966</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>admin</sys_updated_by>
+                        <sys_updated_on>2017-07-06 21:20:04</sys_updated_on>
+                        <value>&amp;lt;a onmousedown='Event.stop(event); return false;' class='' href='sc_req_item_list.do?sysparm_view=ess&amp;amp;sysparm_query=active%3Dtrue%5Erequest.requested_for%3Djavascript%3Ags.getUserID%28%29%5EEQ'&amp;gt;My Requested Items&amp;lt;/a&amp;gt;</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>sys_id</name>
+                        <portal_section display_value="Created 07-06-2017 17:20:04">10a9fae1dbf33200e5c755d0cf961965</portal_section>
+                        <sys_created_by>admin</sys_created_by>
+                        <sys_created_on>2017-07-06 21:20:04</sys_created_on>
+                        <sys_id>90a9fae1dbf33200e5c755d0cf961965</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>admin</sys_updated_by>
+                        <sys_updated_on>2017-07-06 21:20:04</sys_updated_on>
+                        <value>52611b75c611229701a2d3be9969daf6</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>renderer</name>
+                        <portal_section display_value="Created 07-06-2017 17:20:04">10a9fae1dbf33200e5c755d0cf961965</portal_section>
+                        <sys_created_by>admin</sys_created_by>
+                        <sys_created_on>2017-07-06 21:20:04</sys_created_on>
+                        <sys_id>98a9fae1dbf33200e5c755d0cf961965</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>admin</sys_updated_by>
+                        <sys_updated_on>2017-07-06 21:20:04</sys_updated_on>
+                        <value>com.glide.ui.portal.RenderDashboard</value>
+                    </sys_portal_preferences>
+                </related_items_node>
+            </sys_portal>
+            <sys_portal action="INSERT_OR_UPDATE">
+                <dropzone>dropzone1</dropzone>
+                <offset>0</offset>
+                <page display_value="My  Self Service">2af50692db6f3200e5c755d0cf9619e5</page>
+                <summary/>
+                <sys_created_by>admin</sys_created_by>
+                <sys_created_on>2017-07-06 21:20:04</sys_created_on>
+                <sys_id>18a9fae1dbf33200e5c755d0cf96195c</sys_id>
+                <sys_mod_count>0</sys_mod_count>
+                <sys_updated_by>admin</sys_updated_by>
+                <sys_updated_on>2017-07-06 21:20:04</sys_updated_on>
+                <related_items_node>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>renderer_id</name>
+                        <portal_section display_value="Created 07-06-2017 17:20:04">18a9fae1dbf33200e5c755d0cf96195c</portal_section>
+                        <sys_created_by>admin</sys_created_by>
+                        <sys_created_on>2017-07-06 21:20:04</sys_created_on>
+                        <sys_id>10a9fae1dbf33200e5c755d0cf96195d</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>admin</sys_updated_by>
+                        <sys_updated_on>2017-07-06 21:20:04</sys_updated_on>
+                        <value>a066bb690a0a0aa300d40d0cce7ed94f</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>current_page</name>
+                        <portal_section display_value="Created 07-06-2017 17:20:04">18a9fae1dbf33200e5c755d0cf96195c</portal_section>
+                        <sys_created_by>admin</sys_created_by>
+                        <sys_created_on>2017-07-06 21:20:04</sys_created_on>
+                        <sys_id>14a9fae1dbf33200e5c755d0cf96195e</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>admin</sys_updated_by>
+                        <sys_updated_on>2017-07-06 21:20:04</sys_updated_on>
+                        <value>4da11b86c611229701f1d31a48c9245d</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>title</name>
+                        <portal_section display_value="Created 07-06-2017 17:20:04">18a9fae1dbf33200e5c755d0cf96195c</portal_section>
+                        <sys_created_by>admin</sys_created_by>
+                        <sys_created_on>2017-07-06 21:20:04</sys_created_on>
+                        <sys_id>1ca9fae1dbf33200e5c755d0cf96195d</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>admin</sys_updated_by>
+                        <sys_updated_on>2017-07-06 21:20:04</sys_updated_on>
+                        <value>Knowledge Search</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>type</name>
+                        <portal_section display_value="Created 07-06-2017 17:20:04">18a9fae1dbf33200e5c755d0cf96195c</portal_section>
+                        <sys_created_by>admin</sys_created_by>
+                        <sys_created_on>2017-07-06 21:20:04</sys_created_on>
+                        <sys_id>94a9fae1dbf33200e5c755d0cf96195d</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>admin</sys_updated_by>
+                        <sys_updated_on>2017-07-06 21:20:04</sys_updated_on>
+                        <value>knowledge_search</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>renderer</name>
+                        <portal_section display_value="Created 07-06-2017 17:20:04">18a9fae1dbf33200e5c755d0cf96195c</portal_section>
+                        <sys_created_by>admin</sys_created_by>
+                        <sys_created_on>2017-07-06 21:20:04</sys_created_on>
+                        <sys_id>98a9fae1dbf33200e5c755d0cf96195c</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>admin</sys_updated_by>
+                        <sys_updated_on>2017-07-06 21:20:04</sys_updated_on>
+                        <value>com.glide.ui.portal.RenderJavascript</value>
+                    </sys_portal_preferences>
+                </related_items_node>
+            </sys_portal>
+            <sys_portal action="INSERT_OR_UPDATE">
+                <dropzone>dropzone2</dropzone>
+                <offset>3</offset>
+                <page display_value="My  Self Service">2af50692db6f3200e5c755d0cf9619e5</page>
+                <summary/>
+                <sys_created_by>admin</sys_created_by>
+                <sys_created_on>2017-07-06 21:20:04</sys_created_on>
+                <sys_id>1ca9fae1dbf33200e5c755d0cf961966</sys_id>
+                <sys_mod_count>0</sys_mod_count>
+                <sys_updated_by>admin</sys_updated_by>
+                <sys_updated_on>2017-07-06 21:20:04</sys_updated_on>
+                <related_items_node>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>title</name>
+                        <portal_section display_value="Created 07-06-2017 17:20:04">1ca9fae1dbf33200e5c755d0cf961966</portal_section>
+                        <sys_created_by>admin</sys_created_by>
+                        <sys_created_on>2017-07-06 21:20:04</sys_created_on>
+                        <sys_id>1ca9fae1dbf33200e5c755d0cf961967</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>admin</sys_updated_by>
+                        <sys_updated_on>2017-07-06 21:20:04</sys_updated_on>
+                        <value>&amp;lt;a onmousedown='Event.stop(event); return false;' class='' href='incident_list.do?sysparm_query=active%3Dtrue%5Ecaller_id%3Djavascript%3Ags.getUserID%28%29%5EEQ'&amp;gt;My Open Incidents&amp;lt;/a&amp;gt;</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>renderer</name>
+                        <portal_section display_value="Created 07-06-2017 17:20:04">1ca9fae1dbf33200e5c755d0cf961966</portal_section>
+                        <sys_created_by>admin</sys_created_by>
+                        <sys_created_on>2017-07-06 21:20:04</sys_created_on>
+                        <sys_id>94a9fae1dbf33200e5c755d0cf961967</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>admin</sys_updated_by>
+                        <sys_updated_on>2017-07-06 21:20:04</sys_updated_on>
+                        <value>com.glide.ui.portal.RenderDashboard</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>sys_id</name>
+                        <portal_section display_value="Created 07-06-2017 17:20:04">1ca9fae1dbf33200e5c755d0cf961966</portal_section>
+                        <sys_created_by>admin</sys_created_by>
+                        <sys_created_on>2017-07-06 21:20:04</sys_created_on>
+                        <sys_id>9ca9fae1dbf33200e5c755d0cf961966</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>admin</sys_updated_by>
+                        <sys_updated_on>2017-07-06 21:20:04</sys_updated_on>
+                        <value>524b9953c6112297010948bd06679722</value>
+                    </sys_portal_preferences>
+                </related_items_node>
+            </sys_portal>
+            <sys_portal action="INSERT_OR_UPDATE">
+                <dropzone>dropzone1</dropzone>
+                <offset>1</offset>
+                <page display_value="My  Self Service">2af50692db6f3200e5c755d0cf9619e5</page>
+                <summary/>
+                <sys_created_by>admin</sys_created_by>
+                <sys_created_on>2017-07-06 21:20:04</sys_created_on>
+                <sys_id>9ca9fae1dbf33200e5c755d0cf96195e</sys_id>
+                <sys_mod_count>0</sys_mod_count>
+                <sys_updated_by>admin</sys_updated_by>
+                <sys_updated_on>2017-07-06 21:20:04</sys_updated_on>
+                <related_items_node>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>sys_id</name>
+                        <portal_section display_value="Created 07-06-2017 17:20:04">9ca9fae1dbf33200e5c755d0cf96195e</portal_section>
+                        <sys_created_by>admin</sys_created_by>
+                        <sys_created_on>2017-07-06 21:20:04</sys_created_on>
+                        <sys_id>10a9fae1dbf33200e5c755d0cf96195f</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>admin</sys_updated_by>
+                        <sys_updated_on>2017-07-06 21:20:04</sys_updated_on>
+                        <value>bb1babcbdb173200e5c755d0cf9619e5</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>renderer</name>
+                        <portal_section display_value="Created 07-06-2017 17:20:04">9ca9fae1dbf33200e5c755d0cf96195e</portal_section>
+                        <sys_created_by>admin</sys_created_by>
+                        <sys_created_on>2017-07-06 21:20:04</sys_created_on>
+                        <sys_id>18a9fae1dbf33200e5c755d0cf96195f</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>admin</sys_updated_by>
+                        <sys_updated_on>2017-07-06 21:20:04</sys_updated_on>
+                        <value>com.glide.ui.portal.RenderMenus</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>current_page</name>
+                        <portal_section display_value="Created 07-06-2017 17:20:04">9ca9fae1dbf33200e5c755d0cf96195e</portal_section>
+                        <sys_created_by>admin</sys_created_by>
+                        <sys_created_on>2017-07-06 21:20:04</sys_created_on>
+                        <sys_id>94a9fae1dbf33200e5c755d0cf961960</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>admin</sys_updated_by>
+                        <sys_updated_on>2017-07-06 21:20:04</sys_updated_on>
+                        <value>2af50692db6f3200e5c755d0cf9619e5</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>title</name>
+                        <portal_section display_value="Created 07-06-2017 17:20:04">9ca9fae1dbf33200e5c755d0cf96195e</portal_section>
+                        <sys_created_by>admin</sys_created_by>
+                        <sys_created_on>2017-07-06 21:20:04</sys_created_on>
+                        <sys_id>9ca9fae1dbf33200e5c755d0cf96195f</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>admin</sys_updated_by>
+                        <sys_updated_on>2017-07-06 21:20:04</sys_updated_on>
+                        <value>Find Mods</value>
+                    </sys_portal_preferences>
+                </related_items_node>
+            </sys_portal>
+        </related_items_node>
+    </sys_portal_page>
+</record_update>

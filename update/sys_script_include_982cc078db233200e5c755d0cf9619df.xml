@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_134426_mod_list.GetChangedFields</api_name>
+        <client_callable>false</client_callable>
+        <description>Checks the current form for changes in all fields except comment.</description>
+        <name>GetChangedFields</name>
+        <script><![CDATA[var GetChangedFields = Class.create();
+GetChangedFields.prototype = {
+    initialize: function() {
+    },
+	
+	//Take in a GlideRecord (Assumed from table All Mods because 
+	//I couldn't find a way to abstractly get elements), return
+	//true if revelvant fields were changed.
+	getChange: function(record) {
+		var 
+			nameChanges = record.getElement('name').changes(),
+			devChanges = record.getElement('developer').changes(),
+			progChanges = record.getElement('program').changes();
+		
+		if(nameChanges || devChanges || progChanges) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	},
+
+    type: 'GetChangedFields'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-06-21 15:17:59</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>982cc078db233200e5c755d0cf9619df</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>GetChangedFields</sys_name>
+        <sys_package display_value="Mod List" source="x_134426_mod_list">2f7f9f0fdbd33200e5c755d0cf961978</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
+        <sys_update_name>sys_script_include_982cc078db233200e5c755d0cf9619df</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-06-21 15:32:05</sys_updated_on>
+    </sys_script_include>
+</record_update>

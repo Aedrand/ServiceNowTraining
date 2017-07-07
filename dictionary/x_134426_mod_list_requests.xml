@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Requests" max_length="40" name="x_134426_mod_list_requests" type="collection">
+        <element label="Developer" mandatory="true" max_length="100" name="developer" type="string"/>
+        <element label="Name of Program" mandatory="true" max_length="100" name="name" type="string"/>
+        <element label="Release Date" mandatory="true" max_length="40" name="release_date" type="glide_date"/>
+        <element choice="3" default="requested" label="State" max_length="40" name="state" type="choice">
+            <choice>
+                <element label="Requested" sequence="0" value="requested"/>
+                <element label="Approved" sequence="1" value="approved"/>
+                <element label="Denied" sequence="2" value="denied"/>
+            </choice>
+        </element>
+        <element attributes="edge_encryption_enabled=true" label="Description" mandatory="true" max_length="255" name="u_description" type="string_full_utf8"/>
+    </element>
+</database>
