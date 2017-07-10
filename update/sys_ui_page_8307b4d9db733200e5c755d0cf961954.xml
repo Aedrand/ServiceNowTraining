@@ -2,7 +2,24 @@
 <record_update table="sys_ui_page">
     <sys_ui_page action="INSERT_OR_UPDATE">
         <category>general</category>
-        <client_script/>
+        <client_script><![CDATA[function testPrint(arr) {
+	arr.forEach(function(el) {
+		console.log(el.value);
+	});
+}
+
+function myFunction() {
+	var allCheckboxes = document.getElementsByName('requested');
+	var checked = [];
+	
+	for(var i = 0; i < allCheckboxes.length; i++) {
+		if(allCheckboxes[i].checked) {
+			checked.push(allCheckboxes[i]);
+		}
+	}
+	
+	testPrint(checked);
+}]]></client_script>
         <description/>
         <direct>false</direct>
         <endpoint>x_134426_mod_list_Recommended Hardware.do</endpoint>
@@ -74,15 +91,15 @@
 		<div style="grid-column:1/2">
 			<h2>Recommended Hardware</h2>
 			<h4>${jvar_program_bundle.getValue('display_name')}</h4>
-			<input type="checkbox"/><a href="${jvar_bundle_main.getLink(false)}"> 
+			<input type="checkbox" name="requested" value="${jvar_bundle_main.getValue('sys_id')}"/><a href="${jvar_bundle_main.getLink(false)}"> 
 			&#160; ${jvar_bundle_main.getValue('display_name')}</a>
 			<br></br>
 			<j:while test="${jvar_bundle_supports.next()}">
-				<input type="checkbox"/> &#160; <a href="${jvar_bundle_supports.getLink(false)}">
+				<input type="checkbox" name="requested" value="${jvar_bundle_supports.getValue('sys_id')}"/> &#160; <a href="${jvar_bundle_supports.getLink(false)}">
 				${jvar_bundle_supports.getValue('display_name')}</a>
 				<br></br>
 			</j:while>
-			<input type="submit" value="Request Checked Hardware"/>
+			<input type="button" id="requestButton" onclick="myFunction()" value="Request Checked Hardware"/>
 		</div>
 
 		<div style="grid-column: 2/3">
@@ -109,7 +126,7 @@
         <sys_created_on>2017-07-05 17:14:18</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>8307b4d9db733200e5c755d0cf961954</sys_id>
-        <sys_mod_count>265</sys_mod_count>
+        <sys_mod_count>284</sys_mod_count>
         <sys_name>Recommended Hardware</sys_name>
         <sys_package display_value="Mod List" source="x_134426_mod_list">2f7f9f0fdbd33200e5c755d0cf961978</sys_package>
         <sys_policy/>
@@ -117,6 +134,6 @@
         <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
         <sys_update_name>sys_ui_page_8307b4d9db733200e5c755d0cf961954</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-07-07 18:17:02</sys_updated_on>
+        <sys_updated_on>2017-07-10 14:13:53</sys_updated_on>
     </sys_ui_page>
 </record_update>

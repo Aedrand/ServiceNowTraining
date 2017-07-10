@@ -12,7 +12,7 @@
         <advanced>true</advanced>
         <change_fields>false</change_fields>
         <client_callable>false</client_callable>
-        <collection>x_134426_mod_list_requests</collection>
+        <collection>x_134426_mod_list_program_requests</collection>
         <condition/>
         <description/>
         <execute_function>false</execute_function>
@@ -35,7 +35,7 @@
 	duplicateSearchProg.query();
 	
 	//Search Requests table for a record that has the same name as the Request.
-	var duplicateSearchReq = new GlideRecord('x_134426_mod_list_requests');
+	var duplicateSearchReq = new GlideRecord('x_134426_mod_list_program_requests');
 	duplicateSearchReq.addQuery('name','=', current.getValue('name'));
 	duplicateSearchReq.query();
 	
@@ -64,7 +64,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>3fcf6d38dbe33200e5c755d0cf9619be</sys_id>
-        <sys_mod_count>7</sys_mod_count>
+        <sys_mod_count>8</sys_mod_count>
         <sys_name>Prevent Duplicate Entries</sys_name>
         <sys_overrides/>
         <sys_package display_value="Mod List" source="x_134426_mod_list">2f7f9f0fdbd33200e5c755d0cf961978</sys_package>
@@ -73,7 +73,7 @@
         <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
         <sys_update_name>sys_script_3fcf6d38dbe33200e5c755d0cf9619be</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-06-22 18:06:28</sys_updated_on>
+        <sys_updated_on>2017-07-10 20:17:29</sys_updated_on>
         <template/>
         <when>before</when>
     </sys_script>
