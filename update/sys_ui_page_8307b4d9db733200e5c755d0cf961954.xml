@@ -2,23 +2,36 @@
 <record_update table="sys_ui_page">
     <sys_ui_page action="INSERT_OR_UPDATE">
         <category>general</category>
-        <client_script><![CDATA[function testPrint(arr) {
-	arr.forEach(function(el) {
-		console.log(el.value);
-	});
-}
-
-function myFunction() {
+        <client_script><![CDATA[//Onclick function for the submit button. Uses GlideAjax to make server
+//side calls to cart and cart item records.
+function submitRequest(cartID) {
+	//Obtain an array of all checked checkbox values.
 	var allCheckboxes = document.getElementsByName('requested');
 	var checked = [];
-	
-	for(var i = 0; i < allCheckboxes.length; i++) {
-		if(allCheckboxes[i].checked) {
-			checked.push(allCheckboxes[i]);
+	allCheckboxes.forEach(function(chb) {
+		if(chb.checked) {
+			checked.push(chb.value);
 		}
+	});
+	//Stringify array for passing through Ajax.
+	var itemString = JSON.stringify(checked);
+	//Create GlideAjax, passing in parameters.
+	var ajax = new GlideAjax('RecommendedHardwareUtil');
+	ajax.addParam('sysparm_name','populateCart');   //Function to call in SI.
+	ajax.addParam('sysparm_cartID',cartID);   //Target cart record sys_id.
+	ajax.addParam('sysparm_itemString',itemString);   //Stringified array of checked items.
+	ajax.addParam('sysparm_redirect',
+				  'com.glideapp.servicecatalog_cart_view_v2.do');   //Redirect url.
+	ajax.getXML(ajaxResult);   //Returns redirect value.
+	//Callback function. Redirects to redirect value.
+	function ajaxResult(result) {
+		var redirect = result.responseXML.documentElement.getAttribute("answer");
+		window.location.replace(redirect);
 	}
-	
-	testPrint(checked);
+}
+//Onclick function for Go Back button. Returns to program record.
+function goBack(param) {
+	window.location.replace(param);
 }]]></client_script>
         <description/>
         <direct>false</direct>
@@ -32,76 +45,91 @@ function myFunction() {
 		}
 	</style>
 	<div class="container">
-		<g:evaluate var="jvar_program_bundle" object="true">
+		<!--Obtain the record of the program record itself.-->
+		<g:evaluate var="jvar_program" object="true">
+			<!--Sys_ID of target program record sent via 'View Recommended Hardware' UI Action.-->
 			var id = RP.getParameterValue('sysparm_id');
 			var progRecord = new GlideRecord('x_134426_mod_list_all_programs');
-				progRecord.get(id);
-			var bundleRecord = new GlideRecord('cmdb_model');
-			bundleRecord.get('sys_id', progRecord.getValue('recommended_hardware'));
+			progRecord.get(id);
+			progRecord;
+		</g:evaluate>
+		
+		<!--Obtain the record of the Order Guide itself.-->
+		<g:evaluate var="jvar_program_bundle" object="true">
+			var bundleRecord = progRecord.recommended_hardware.getRefRecord();
 			bundleRecord;
 		</g:evaluate>
-	
-		<g:evaluate var="jvar_bundle_main" object="true">
-			var mainRecord = new GlideRecord('cmdb_m2m_model_component');
-			mainRecord.addQuery('parent', bundleRecord.getValue('sys_id'));
-			mainRecord.addQuery('master', true);
-			mainRecord.query();
-			mainRecord.next();
 		
-			var mainRef = new GlideRecord('cmdb_model');
-			mainRef.get('sys_id', mainRecord.getValue('child'));
-			mainRef;
-		</g:evaluate>
-		
-		<g:evaluate var="jvar_bundle_supports" object="true">
-			var supportRecord = new GlideRecord('cmdb_m2m_model_component');
-			supportRecord.addQuery('parent', bundleRecord.getValue('sys_id'));
-			supportRecord.addQuery('master', false);
-			supportRecord.query();
-			supportRecord.next();
-		
-			var supportRef = new GlideRecord('cmdb_model');
-			var queryString = supportRecord.getValue('child');
-			while(supportRecord.next()) {
-				queryString += ',' + supportRecord.getValue('child');
+		<!--Get the items that make up the order guide.-->
+		<g:evaluate var="jvar_guide_contents" object="true">
+			<!--Not sure if there's a way to get to item rules from anywhere except direct reference.-->
+			var rulesRecord = new GlideRecord('sc_cat_item_guide_items');
+			rulesRecord.get('guide', bundleRecord.sys_id);
+			<!--Populate a string var with sys ids of all items listed in rules.-->
+			var queryString = rulesRecord.getValue('item');
+			while(rulesRecord.next()) {
+				queryString += ',' + rulesRecord.getValue('item');
 			}
-			supportRef.addQuery('sys_id','IN',queryString);
-			supportRef.query();
-			supportRef;
+			<!--User queryString to make IN query to item table. Return result.-->
+			var itemsRecord = new GlideRecord(rulesRecord.item.getRefRecord().getTableName());
+			itemsRecord.addQuery('sys_id','IN', queryString);
+			itemsRecord.query();
+			itemsRecord;
 		</g:evaluate>
-
+		
+		<!--Obtain hardware currently assigned to the user.-->
 		<g:evaluate var="jvar_my_hardware" object="true">
 			var myHWRecord = new GlideRecord('alm_hardware');
 			myHWRecord.addQuery('install_status', 1);
 			myHWRecord.addQuery('assigned_to', gs.getUserID());
 			myHWRecord.query();
 			myHWRecord.next();
-
+			<!--Create new GlideRecord and populate queryString2 for IN query.-->
 			var myModelRecord = new GlideRecord('cmdb_model');
 			var queryString2 = myHWRecord.getValue('model');
 			while(myHWRecord.next()) {
 				queryString2 += ',' + myHWRecord.getValue('model');
 			}
-
+			<!--IN query to obtain all assets assigned to user.-->
 			myModelRecord.addQuery('sys_id','IN',queryString2);
 			myModelRecord.query();
 			myModelRecord;
 		</g:evaluate>
-
+		
+		<!--Get the cart record for the current user.-->
+		<g:evaluate var="jvar_cart" object="true">
+			var cartRecord = new GlideRecord('sc_cart');
+			cartRecord.addQuery('user', gs.getUserID());
+			cartRecord.query();
+			if(!cartRecord.next()){
+				cartRecord.initialize();
+				cartRecord.user = gs.getUserID();
+				cartRecord.insert();
+			}
+			cartRecord;
+		</g:evaluate>
+		
+		<!--Page Visual HTML-->
+		<!--Recommended Hardware Section-->
 		<div style="grid-column:1/2">
 			<h2>Recommended Hardware</h2>
-			<h4>${jvar_program_bundle.getValue('display_name')}</h4>
-			<input type="checkbox" name="requested" value="${jvar_bundle_main.getValue('sys_id')}"/><a href="${jvar_bundle_main.getLink(false)}"> 
-			&#160; ${jvar_bundle_main.getValue('display_name')}</a>
-			<br></br>
-			<j:while test="${jvar_bundle_supports.next()}">
-				<input type="checkbox" name="requested" value="${jvar_bundle_supports.getValue('sys_id')}"/> &#160; <a href="${jvar_bundle_supports.getLink(false)}">
-				${jvar_bundle_supports.getValue('display_name')}</a>
+			<h4>${jvar_program_bundle.getValue('name')}</h4>
+			<!--List recommended hardware and create input checkboxes for each entry.-->
+			<j:while test="${jvar_guide_contents.next()}">
+				<input type="checkbox" name="requested" value="${jvar_guide_contents.getValue('sys_id')}"/> 
+				&#160; <a href="https://dev33167.service-now.com/com.glideapp.servicecatalog_cat_item_view.do?sysparm_id=${jvar_guide_contents.getValue('sys_id')}">
+				${jvar_guide_contents.getValue('sys_name')}</a>
 				<br></br>
 			</j:while>
-			<input type="button" id="requestButton" onclick="myFunction()" value="Request Checked Hardware"/>
+			<!--Submit button.-->
+			<input type="button" id="requestButton" onclick="submitRequest('${jvar_cart.getValue('sys_id')}')" value="Request Checked Hardware"/>
+			<br></br>
+			<j:set var="jvar_go_back" value="${jvar_program.getLink(true)}"/>
+			<!--Go Back button.-->
+			<input type="button" id="backButton" onclick="goBack('${jvar_go_back}')" value="Go Back"/>
 		</div>
 
+		<!--Current User Hardware Section-->
 		<div style="grid-column: 2/3">
 			<h2>Your Hardware</h2>
 			<h4>Hardware Assigned to ${gs.getUserDisplayName()}</h4>
@@ -126,7 +154,7 @@ function myFunction() {
         <sys_created_on>2017-07-05 17:14:18</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>8307b4d9db733200e5c755d0cf961954</sys_id>
-        <sys_mod_count>284</sys_mod_count>
+        <sys_mod_count>405</sys_mod_count>
         <sys_name>Recommended Hardware</sys_name>
         <sys_package display_value="Mod List" source="x_134426_mod_list">2f7f9f0fdbd33200e5c755d0cf961978</sys_package>
         <sys_policy/>
@@ -134,6 +162,6 @@ function myFunction() {
         <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
         <sys_update_name>sys_ui_page_8307b4d9db733200e5c755d0cf961954</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-07-10 14:13:53</sys_updated_on>
+        <sys_updated_on>2017-07-12 21:42:18</sys_updated_on>
     </sys_ui_page>
 </record_update>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_134426_mod_list.RecommendedHardwareUtil</api_name>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>RecommendedHardwareUtil</name>
+        <script><![CDATA[var RecommendedHardwareUtil = Class.create();
+RecommendedHardwareUtil.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+	
+	populateCart: function() {
+		var cartID = this.getParameter('sysparm_cartID');
+		var redirect = this.getParameter('sysparm_redirect');
+		var itemString = this.getParameter('sysparm_itemString');
+		var itemArr = JSON.parse(itemString);
+		
+		this._clearCart(cartID);
+			
+		for(var i=0; i < itemArr.length; i++) {
+			this._addItem(cartID, itemArr[i], 1);
+		}
+		
+		return redirect;
+	},
+	
+	_clearCart: function(cartid) {
+		var items = new GlideRecord('sc_cart_item');
+		items.addQuery('cart', cartid);
+		items.deleteMultiple();
+	},
+	
+	_addItem: function(cartid, itemid, quantity) {
+		var item = new GlideRecord('sc_cart_item');
+		item.initialize();
+		item.cart = cartid;
+		item.cat_item = itemid;
+		item.quantity = quantity;
+		item.insert();
+	},
+	
+    type: 'RecommendedHardwareUtil'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-07-11 21:17:09</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>1d54ec13dbf33200e5c755d0cf961920</sys_id>
+        <sys_mod_count>52</sys_mod_count>
+        <sys_name>RecommendedHardwareUtil</sys_name>
+        <sys_package display_value="Mod List" source="x_134426_mod_list">2f7f9f0fdbd33200e5c755d0cf961978</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
+        <sys_update_name>sys_script_include_1d54ec13dbf33200e5c755d0cf961920</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-07-12 18:36:26</sys_updated_on>
+    </sys_script_include>
+</record_update>

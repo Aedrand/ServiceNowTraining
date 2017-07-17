@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sc_cat_item_guide_items">
+    <sc_cat_item_guide_items action="INSERT_OR_UPDATE">
+        <condition/>
+        <guide display_value="Test Guide">f2238b83db333200e5c755d0cf961904</guide>
+        <ignore_mandatory_eval>false</ignore_mandatory_eval>
+        <item display_value="Apple Watch">4a17d6a3ff133100ba13ffffffffffe7</item>
+        <order>2</order>
+        <quantity>1</quantity>
+        <requested_by/>
+        <requested_for/>
+        <show_quantity>false</show_quantity>
+        <sys_class_name>sc_cat_item_guide_items</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-07-11 13:59:25</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>5ba44b83db333200e5c755d0cf96196a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>f2238b83db333200e5c755d0cf961904</sys_name>
+        <sys_package display_value="Mod List" source="x_134426_mod_list">2f7f9f0fdbd33200e5c755d0cf961978</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
+        <sys_update_name>sc_cat_item_guide_items_5ba44b83db333200e5c755d0cf96196a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-07-11 13:59:25</sys_updated_on>
+        <use_sc_layout>true</use_sc_layout>
+    </sc_cat_item_guide_items>
+</record_update>

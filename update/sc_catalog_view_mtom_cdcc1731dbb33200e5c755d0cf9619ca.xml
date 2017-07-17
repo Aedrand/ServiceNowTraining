@@ -2,7 +2,7 @@
 <record_update table="sc_catalog_view_mtom">
     <sc_catalog_view_mtom action="INSERT_OR_UPDATE">
         <default>true</default>
-        <sc_catalog display_value="Test Catalog">e6ac5bfddb733200e5c755d0cf961988</sc_catalog>
+        <sc_catalog display_value="Asset Transfer">e6ac5bfddb733200e5c755d0cf961988</sc_catalog>
         <sys_class_name>sc_catalog_view_mtom</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-07-07 18:32:03</sys_created_on>

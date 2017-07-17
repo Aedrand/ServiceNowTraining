@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sc_cat_item_category">
+    <sc_cat_item_category action="INSERT_OR_UPDATE">
+        <sc_cat_item display_value="A53 Series">b21f4f0bdb333200e5c755d0cf96194d</sc_cat_item>
+        <sc_category display_value="Hardware Assets">ddda2b75dbb33200e5c755d0cf9619ab</sc_category>
+        <sys_class_name>sc_cat_item_category</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-07-11 14:44:47</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>3e1f4f0bdb333200e5c755d0cf961952</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Hardware Assets.A53 Series</sys_name>
+        <sys_package display_value="Mod List" source="x_134426_mod_list">2f7f9f0fdbd33200e5c755d0cf961978</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
+        <sys_update_name>sc_cat_item_category_3e1f4f0bdb333200e5c755d0cf961952</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-07-11 14:44:47</sys_updated_on>
+    </sc_cat_item_category>
+</record_update>

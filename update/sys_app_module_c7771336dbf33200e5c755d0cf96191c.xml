@@ -6,8 +6,9 @@
         <assessment/>
         <content_page/>
         <device_type/>
-        <filter table="sysapproval_approver">sysapprovalSTARTSWITHPRQ^state=requested^EQ<item endquery="false" field="sysapproval" goto="false" newquery="false" operator="STARTSWITH" or="false" value="PRQ"/>
+        <filter table="sysapproval_approver">sysapprovalSTARTSWITHPRQ^state=requested^approverDYNAMIC90d1921e5f510100a9ad2572f2b477fe^EQ<item endquery="false" field="sysapproval" goto="false" newquery="false" operator="STARTSWITH" or="false" value="PRQ"/>
             <item endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="requested"/>
+            <item endquery="false" field="approver" goto="false" newquery="false" operator="DYNAMIC" or="false" value="90d1921e5f510100a9ad2572f2b477fe"/>
             <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
         </filter>
         <hint/>
@@ -22,7 +23,7 @@
         <override_menu_roles>false</override_menu_roles>
         <query/>
         <report/>
-        <roles/>
+        <roles>x_134426_mod_list.approver</roles>
         <survey/>
         <survey_overwrite>true</survey_overwrite>
         <sys_class_name>sys_app_module</sys_class_name>
@@ -32,7 +33,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>c7771336dbf33200e5c755d0cf96191c</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>3</sys_mod_count>
         <sys_name>My Approvals</sys_name>
         <sys_overrides/>
         <sys_package display_value="Mod List" source="x_134426_mod_list">2f7f9f0fdbd33200e5c755d0cf961978</sys_package>
@@ -41,7 +42,7 @@
         <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
         <sys_update_name>sys_app_module_c7771336dbf33200e5c755d0cf96191c</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-07-10 20:55:10</sys_updated_on>
+        <sys_updated_on>2017-07-13 14:19:02</sys_updated_on>
         <timeline_page/>
         <title>My Approvals</title>
         <uncancelable>false</uncancelable>

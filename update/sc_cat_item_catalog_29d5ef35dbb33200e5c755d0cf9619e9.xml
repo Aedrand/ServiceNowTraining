@@ -2,7 +2,7 @@
 <record_update table="sc_cat_item_catalog">
     <sc_cat_item_catalog action="INSERT_OR_UPDATE">
         <sc_cat_item display_value="Test Item ">a7a52375dbb33200e5c755d0cf9619ac</sc_cat_item>
-        <sc_catalog display_value="Test Catalog">e6ac5bfddb733200e5c755d0cf961988</sc_catalog>
+        <sc_catalog display_value="Asset Transfer">e6ac5bfddb733200e5c755d0cf961988</sc_catalog>
         <sys_class_name>sc_cat_item_catalog</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-07-07 19:11:41</sys_created_on>

@@ -18,11 +18,12 @@ var deniedRecords = new GlideRecord('x_134426_mod_list_program_requests');
 deniedRecords.addQuery('approval','=','rejected');
 deniedRecords.query();
 
-var deniedApprovals = new GlideRecord('x_134426_mod_list_program_requests');
-deniedApprovals.addQuery('approval_for','STARTSWITH','PRQ');
-deniedApprovals.addQuery('state','rejected');
+var deniedApprovals = new GlideRecord('sysapproval_approver');
+deniedApprovals.addQuery('document_id.number','STARTSWITH','PRQ');
+deniedApprovals.addQuery('state','IN','rejected,not_required');
 deniedApprovals.query();
 
+gs.info(deniedApprovals.getRowCount());
 //Delete all found records.
 deniedRecords.deleteMultiple();
 deniedApprovals.deleteMultiple();]]></script>
@@ -31,7 +32,7 @@ deniedApprovals.deleteMultiple();]]></script>
         <sys_created_on>2017-06-23 14:45:50</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>04d0e611dbab3200e5c755d0cf961904</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>10</sys_mod_count>
         <sys_name>Remove Denied Requests</sys_name>
         <sys_package display_value="Mod List" source="x_134426_mod_list">2f7f9f0fdbd33200e5c755d0cf961978</sys_package>
         <sys_policy/>
@@ -39,7 +40,7 @@ deniedApprovals.deleteMultiple();]]></script>
         <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
         <sys_update_name>sysauto_script_04d0e611dbab3200e5c755d0cf961904</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-07-10 21:09:04</sys_updated_on>
+        <sys_updated_on>2017-07-13 16:29:11</sys_updated_on>
         <upgrade_safe>false</upgrade_safe>
     </sysauto_script>
 </record_update>

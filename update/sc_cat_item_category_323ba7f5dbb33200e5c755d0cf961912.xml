@@ -2,7 +2,7 @@
 <record_update table="sc_cat_item_category">
     <sc_cat_item_category action="INSERT_OR_UPDATE">
         <sc_cat_item display_value="Test Item ">a7a52375dbb33200e5c755d0cf9619ac</sc_cat_item>
-        <sc_category display_value="Test Category">ddda2b75dbb33200e5c755d0cf9619ab</sc_category>
+        <sc_category display_value="Hardware Assets">ddda2b75dbb33200e5c755d0cf9619ab</sc_category>
         <sys_class_name>sc_cat_item_category</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2017-07-07 19:35:15</sys_created_on>
