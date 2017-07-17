@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <client_script><![CDATA[function addItems() {
+	var ajax = new GlideAjax('BulkAssetAddTestingUtil');
+	ajax.addParam('sysparm_name', 'insertRecords');
+	ajax.addParam('sysparm_catID', category.value);
+	ajax.addParam('sysparm_modID', hardwareModel.value);
+	ajax.addParam('sysparm_stockID', stockroom.value);
+	ajax.addParam('sysparm_addNum',numberAdd.value);
+	ajax.addParam('sysparm_startNum',numberStart.value);
+	ajax.addParam('sysparm_prefix',tagPrefix.value);
+	ajax.getXML();
+	function ajaxResult(result) {
+		var message = result.responseXML.documentElement.getAttribute("answer");
+		document.getElementById('done').innerHTML = message;
+	}
+}
+
+function tItems() {
+	var t = '1';
+	var n = parseInt(t);
+	console.log(typeof(n));
+}]]></client_script>
+        <description/>
+        <direct>false</direct>
+        <endpoint>x_134426_mod_list_Add Assets (Temp).do</endpoint>
+        <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+	<div class="container">
+		
+		<h2>Bulk Add Assets (For Testing)</h2>
+		
+		<div class="assetAdd">
+			Select model category.
+			<g:ui_reference name="category" id="category" table="cmdb_model_category"/>
+			Select hardware model. 
+			<g:ui_reference name="hardwareModel" id="hardwareModel" table="cmdb_model"/>
+			Select target stockroom.
+			<g:ui_reference name="stockroom" id="stockroom" table="alm_stockroom"/>
+			<br/>
+			Number to create. <br/>
+			<input type="number" id="numberAdd"/>
+			<br/>
+		</div>
+		
+		<div class="assetConfig">
+			Tag Prefix. <br/>
+			<input type="text" id="tagPrefix"/>
+			<br/>
+			Tag Start Number. <br/>
+			<input type="number" id="numberStart"/>
+			<br/>
+		</div>
+		
+	<div class="submitDiv">
+		<input type="button" id="submit" value="Start" onclick="addItems()"/>
+		<span id = "done"></span>
+	</div>
+	</div>
+	
+</j:jelly>]]></html>
+        <name>Add Assets (Temp)</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-07-17 14:57:11</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>df9a460ddb000300e5c755d0cf96198b</sys_id>
+        <sys_mod_count>34</sys_mod_count>
+        <sys_name>Add Assets (Temp)</sys_name>
+        <sys_package display_value="Mod List" source="x_134426_mod_list">2f7f9f0fdbd33200e5c755d0cf961978</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
+        <sys_update_name>sys_ui_page_df9a460ddb000300e5c755d0cf96198b</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-07-17 17:31:10</sys_updated_on>
+    </sys_ui_page>
+</record_update>

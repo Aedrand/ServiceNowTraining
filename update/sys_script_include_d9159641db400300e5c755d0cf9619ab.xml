@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_134426_mod_list.BulkAssetAddTestingUtil</api_name>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>BulkAssetAddTestingUtil</name>
+        <script><![CDATA[var BulkAssetAddTestingUtil = Class.create();
+BulkAssetAddTestingUtil.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+	
+	insertRecords:function() {
+		var inputData = {
+			categoryID:this.getParameter('sysparm_catID'),
+			modelID:this.getParameter('sysparm_modID'),
+			stockroomID:this.getParameter('sysparm_stockID'),
+			addNumber:parseInt(this.getParameter('sysparm_addNum')),
+			startNumber:parseInt(this.getParameter('sysparm_startNum')),
+			prefix:this.getParameter('sysparm_prefix'),
+			tag:''
+		};
+		for(var i=0; i < inputData.addNumber; i++) {
+			inputData.tag = inputData.prefix + inputData.startNumber;
+			this._createRecord(inputData);
+			inputData.startNumber++;
+		}
+		
+		return 'Done.';
+		
+	},
+	
+	_createRecord:function(data) {
+		var newAsset = new GlideRecord('alm_asset');
+		newAsset.initialize();
+		newAsset.setValue('model_category', data.categoryID);
+		newAsset.setValue('model', data.modelID);
+		newAsset.setValue('sys_class_name', 'alm_hardware');
+		newAsset.setValue('install_status',6);
+		newAsset.setValue('stockroom', data.stockroomID);
+		newAsset.setValue('asset_tag', data.tag);
+		newAsset.insert();
+	},
+
+    type: 'BulkAssetAddTestingUtil'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-07-17 15:44:21</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>d9159641db400300e5c755d0cf9619ab</sys_id>
+        <sys_mod_count>21</sys_mod_count>
+        <sys_name>BulkAssetAddTestingUtil</sys_name>
+        <sys_package display_value="Mod List" source="x_134426_mod_list">2f7f9f0fdbd33200e5c755d0cf961978</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
+        <sys_update_name>sys_script_include_d9159641db400300e5c755d0cf9619ab</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-07-17 17:29:55</sys_updated_on>
+    </sys_script_include>
+</record_update>
