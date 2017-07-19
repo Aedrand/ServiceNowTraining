@@ -2,30 +2,16 @@
 <record_update>
     <sys_ui_section caption="Availability" section_id="da83de60db733200e5c755d0cf9619df" sys_domain="global" table="x_134426_mod_list_all_programs" version="3" view="">
         <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>available</element>
+            <element>recommended_hardware</element>
             <position>0</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2017-07-05 17:03:37</sys_created_on>
-            <sys_id>0a55fc99db733200e5c755d0cf9619d5</sys_id>
+            <sys_created_on>2017-07-18 19:00:15</sys_created_on>
+            <sys_id>e5bccca5db800300e5c755d0cf961908</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="Availability" display_value="Availability" name="x_134426_mod_list_all_programs" sys_domain="global" view="Default view">da83de60db733200e5c755d0cf9619df</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2017-07-05 17:03:37</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>recommended_hardware</element>
-            <position>1</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2017-07-05 17:03:37</sys_created_on>
-            <sys_id>8a55fc99db733200e5c755d0cf9619d5</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="Availability" display_value="Availability" name="x_134426_mod_list_all_programs" sys_domain="global" view="Default view">da83de60db733200e5c755d0cf9619df</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2017-07-05 17:03:37</sys_updated_on>
+            <sys_updated_on>2017-07-18 19:00:15</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>

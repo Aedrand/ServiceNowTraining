@@ -19,7 +19,8 @@ GetChangedFields.prototype = {
 		var 
 			nameChanges = record.getElement('name').changes(),
 			devChanges = record.getElement('developer').changes(),
-			progChanges = record.getElement('program').changes();
+			progChanges = record.getElement('program').changes(),
+			descChanges = record.getElement('u_description').changes();
 		
 		if(nameChanges || devChanges || progChanges) {
 			return true;
@@ -36,7 +37,7 @@ GetChangedFields.prototype = {
         <sys_created_on>2017-06-21 15:17:59</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>982cc078db233200e5c755d0cf9619df</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>5</sys_mod_count>
         <sys_name>GetChangedFields</sys_name>
         <sys_package display_value="Mod List" source="x_134426_mod_list">2f7f9f0fdbd33200e5c755d0cf961978</sys_package>
         <sys_policy>read</sys_policy>
@@ -44,6 +45,6 @@ GetChangedFields.prototype = {
         <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
         <sys_update_name>sys_script_include_982cc078db233200e5c755d0cf9619df</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-06-21 15:32:05</sys_updated_on>
+        <sys_updated_on>2017-07-18 16:06:48</sys_updated_on>
     </sys_script_include>
 </record_update>

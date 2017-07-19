@@ -23,7 +23,7 @@ function tItems() {
 	var n = parseInt(t);
 	console.log(typeof(n));
 }]]></client_script>
-        <description/>
+        <description>TEMPORARY page to make testing asset management workflows and processes easier. Adds programmatically generated assets in bulk based on user input.</description>
         <direct>false</direct>
         <endpoint>x_134426_mod_list_Add Assets (Temp).do</endpoint>
         <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
@@ -68,7 +68,7 @@ function tItems() {
         <sys_created_on>2017-07-17 14:57:11</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>df9a460ddb000300e5c755d0cf96198b</sys_id>
-        <sys_mod_count>34</sys_mod_count>
+        <sys_mod_count>35</sys_mod_count>
         <sys_name>Add Assets (Temp)</sys_name>
         <sys_package display_value="Mod List" source="x_134426_mod_list">2f7f9f0fdbd33200e5c755d0cf961978</sys_package>
         <sys_policy/>
@@ -76,6 +76,6 @@ function tItems() {
         <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
         <sys_update_name>sys_ui_page_df9a460ddb000300e5c755d0cf96198b</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-07-17 17:31:10</sys_updated_on>
+        <sys_updated_on>2017-07-18 16:16:57</sys_updated_on>
     </sys_ui_page>
 </record_update>

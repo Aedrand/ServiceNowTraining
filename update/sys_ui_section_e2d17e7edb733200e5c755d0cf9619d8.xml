@@ -5,69 +5,55 @@
             <element>number</element>
             <position>0</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2017-07-10 18:03:23</sys_created_on>
-            <sys_id>d2f23abedb733200e5c755d0cf96192b</sys_id>
+            <sys_created_on>2017-07-18 18:30:14</sys_created_on>
+            <sys_id>f5d584a1db800300e5c755d0cf9619c7</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="Approval" display_value="Approval" name="x_134426_mod_list_program_requests" sys_domain="global" view="0cebef090a0006d40188d968934d3e9a">e2d17e7edb733200e5c755d0cf9619d8</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2017-07-10 18:03:23</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>close_notes</element>
-            <position>1</position>
-            <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2017-07-10 18:03:23</sys_created_on>
-            <sys_id>56f23abedb733200e5c755d0cf96192b</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="Approval" display_value="Approval" name="x_134426_mod_list_program_requests" sys_domain="global" view="0cebef090a0006d40188d968934d3e9a">e2d17e7edb733200e5c755d0cf9619d8</sys_ui_section>
-            <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2017-07-10 18:03:23</sys_updated_on>
+            <sys_updated_on>2017-07-18 18:30:14</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.split</element>
-            <position>2</position>
+            <position>1</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2017-07-10 18:03:23</sys_created_on>
-            <sys_id>d6f23abedb733200e5c755d0cf96192b</sys_id>
+            <sys_created_on>2017-07-18 18:30:14</sys_created_on>
+            <sys_id>bdd584a1db800300e5c755d0cf9619c7</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="Approval" display_value="Approval" name="x_134426_mod_list_program_requests" sys_domain="global" view="0cebef090a0006d40188d968934d3e9a">e2d17e7edb733200e5c755d0cf9619d8</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2017-07-10 18:03:23</sys_updated_on>
+            <sys_updated_on>2017-07-18 18:30:14</sys_updated_on>
             <sys_user/>
             <type>.split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>approval</element>
-            <position>3</position>
+            <position>2</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2017-07-10 18:03:23</sys_created_on>
-            <sys_id>5af23abedb733200e5c755d0cf96192b</sys_id>
+            <sys_created_on>2017-07-18 18:30:14</sys_created_on>
+            <sys_id>31d584a1db800300e5c755d0cf9619c8</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="Approval" display_value="Approval" name="x_134426_mod_list_program_requests" sys_domain="global" view="0cebef090a0006d40188d968934d3e9a">e2d17e7edb733200e5c755d0cf9619d8</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2017-07-10 18:03:23</sys_updated_on>
+            <sys_updated_on>2017-07-18 18:30:14</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>state</element>
-            <position>4</position>
+            <position>3</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2017-07-10 18:03:23</sys_created_on>
-            <sys_id>daf23abedb733200e5c755d0cf96192b</sys_id>
+            <sys_created_on>2017-07-18 18:30:14</sys_created_on>
+            <sys_id>b1d584a1db800300e5c755d0cf9619c8</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="Approval" display_value="Approval" name="x_134426_mod_list_program_requests" sys_domain="global" view="0cebef090a0006d40188d968934d3e9a">e2d17e7edb733200e5c755d0cf9619d8</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2017-07-10 18:03:23</sys_updated_on>
+            <sys_updated_on>2017-07-18 18:30:14</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>

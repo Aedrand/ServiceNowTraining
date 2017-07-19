@@ -5,13 +5,13 @@
             <element>name</element>
             <position>0</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2017-07-10 18:03:09</sys_created_on>
-            <sys_id>bae2f6bedb733200e5c755d0cf961983</sys_id>
+            <sys_created_on>2017-07-18 18:31:54</sys_created_on>
+            <sys_id>5636c8a1db800300e5c755d0cf961911</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_134426_mod_list_program_requests" sys_domain="global" view="0cebef090a0006d40188d968934d3e9a">f6e2f6bedb733200e5c755d0cf961974</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2017-07-10 18:03:09</sys_updated_on>
+            <sys_updated_on>2017-07-18 18:31:54</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -19,41 +19,69 @@
             <element>developer</element>
             <position>1</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2017-07-10 18:03:09</sys_created_on>
-            <sys_id>3ee2f6bedb733200e5c755d0cf961983</sys_id>
+            <sys_created_on>2017-07-18 18:31:54</sys_created_on>
+            <sys_id>d636c8a1db800300e5c755d0cf961911</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_134426_mod_list_program_requests" sys_domain="global" view="0cebef090a0006d40188d968934d3e9a">f6e2f6bedb733200e5c755d0cf961974</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2017-07-10 18:03:09</sys_updated_on>
+            <sys_updated_on>2017-07-18 18:31:54</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_request_description</element>
+            <position>2</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2017-07-18 18:31:54</sys_created_on>
+            <sys_id>5a36c8a1db800300e5c755d0cf961911</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_134426_mod_list_program_requests" sys_domain="global" view="0cebef090a0006d40188d968934d3e9a">f6e2f6bedb733200e5c755d0cf961974</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2017-07-18 18:31:54</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.split</element>
-            <position>2</position>
+            <position>3</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2017-07-10 18:03:09</sys_created_on>
-            <sys_id>bee2f6bedb733200e5c755d0cf961983</sys_id>
+            <sys_created_on>2017-07-18 18:31:54</sys_created_on>
+            <sys_id>da36c8a1db800300e5c755d0cf961911</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_134426_mod_list_program_requests" sys_domain="global" view="0cebef090a0006d40188d968934d3e9a">f6e2f6bedb733200e5c755d0cf961974</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2017-07-10 18:03:09</sys_updated_on>
+            <sys_updated_on>2017-07-18 18:31:54</sys_updated_on>
             <sys_user/>
             <type>.split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>release_date</element>
-            <position>3</position>
+            <position>4</position>
             <sys_created_by>admin</sys_created_by>
-            <sys_created_on>2017-07-10 18:03:09</sys_created_on>
-            <sys_id>32e2f6bedb733200e5c755d0cf961984</sys_id>
+            <sys_created_on>2017-07-18 18:31:54</sys_created_on>
+            <sys_id>5e36c8a1db800300e5c755d0cf961911</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_134426_mod_list_program_requests" sys_domain="global" view="0cebef090a0006d40188d968934d3e9a">f6e2f6bedb733200e5c755d0cf961974</sys_ui_section>
             <sys_updated_by>admin</sys_updated_by>
-            <sys_updated_on>2017-07-10 18:03:09</sys_updated_on>
+            <sys_updated_on>2017-07-18 18:31:54</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>recommended_hardware</element>
+            <position>5</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2017-07-18 18:31:54</sys_created_on>
+            <sys_id>de36c8a1db800300e5c755d0cf961911</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_134426_mod_list_program_requests" sys_domain="global" view="0cebef090a0006d40188d968934d3e9a">f6e2f6bedb733200e5c755d0cf961974</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2017-07-18 18:31:54</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>

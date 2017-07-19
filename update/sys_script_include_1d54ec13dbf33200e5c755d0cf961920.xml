@@ -5,32 +5,32 @@
         <active>true</active>
         <api_name>x_134426_mod_list.RecommendedHardwareUtil</api_name>
         <client_callable>true</client_callable>
-        <description/>
+        <description>Utilities to be used with GlideAjax for performing server-side operations of the 'Recommended Hardware' UI Page.</description>
         <name>RecommendedHardwareUtil</name>
         <script><![CDATA[var RecommendedHardwareUtil = Class.create();
 RecommendedHardwareUtil.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
-	
+	//Read parameters, clear and populate the cart with the passed items.
 	populateCart: function() {
-		var cartID = this.getParameter('sysparm_cartID');
-		var redirect = this.getParameter('sysparm_redirect');
-		var itemString = this.getParameter('sysparm_itemString');
-		var itemArr = JSON.parse(itemString);
-		
+		var cartID = this.getParameter('sysparm_cartID');   //The sys_id of the cart to be added to.
+		var redirect = this.getParameter('sysparm_redirect');   //The redirect url to be returned.
+		var itemString = this.getParameter('sysparm_itemString');   //The encoded requested item array.
+		var itemArr = JSON.parse(itemString);   //Decoded requested item array.
+		//Clear the cart.
 		this._clearCart(cartID);
-			
+		//Populate the cart with the passedrequested items.
 		for(var i=0; i < itemArr.length; i++) {
 			this._addItem(cartID, itemArr[i], 1);
 		}
-		
+		//Return redirect value.
 		return redirect;
 	},
-	
+	//Clears the passed cart. Takes in cart sys_ID.
 	_clearCart: function(cartid) {
 		var items = new GlideRecord('sc_cart_item');
 		items.addQuery('cart', cartid);
 		items.deleteMultiple();
 	},
-	
+	//Adds the passed item to the cart. Takes in the cart sys_ID, item sys_ID, and quantity.
 	_addItem: function(cartid, itemid, quantity) {
 		var item = new GlideRecord('sc_cart_item');
 		item.initialize();
@@ -47,7 +47,7 @@ RecommendedHardwareUtil.prototype = Object.extendsObject(global.AbstractAjaxProc
         <sys_created_on>2017-07-11 21:17:09</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>1d54ec13dbf33200e5c755d0cf961920</sys_id>
-        <sys_mod_count>52</sys_mod_count>
+        <sys_mod_count>57</sys_mod_count>
         <sys_name>RecommendedHardwareUtil</sys_name>
         <sys_package display_value="Mod List" source="x_134426_mod_list">2f7f9f0fdbd33200e5c755d0cf961978</sys_package>
         <sys_policy>read</sys_policy>
@@ -55,6 +55,6 @@ RecommendedHardwareUtil.prototype = Object.extendsObject(global.AbstractAjaxProc
         <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
         <sys_update_name>sys_script_include_1d54ec13dbf33200e5c755d0cf961920</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-07-12 18:36:26</sys_updated_on>
+        <sys_updated_on>2017-07-19 15:48:25</sys_updated_on>
     </sys_script_include>
 </record_update>

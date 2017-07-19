@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
-    <element extends="task" label="Program Requests" max_length="40" name="x_134426_mod_list_program_requests" sizeclass="6" type="collection">
+    <element audit="true" extends="task" label="Program Requests" max_length="40" name="x_134426_mod_list_program_requests" sizeclass="8" type="collection">
         <element attributes="edge_encryption_enabled=true" label="Developer" mandatory="true" max_length="40" name="developer" type="string"/>
         <element attributes="edge_encryption_enabled=true" label="Name of Program" mandatory="true" max_length="40" name="name" type="string"/>
         <element label="Recommended Hardware" mandatory="true" max_length="32" name="recommended_hardware" reference="sc_cat_item_guide" reference_qual="sc_catalogsLIKEe6ac5bfddb733200e5c755d0cf961988^category=67b051e3dbb33200e5c755d0cf9619a3^EQ" reference_qual_condition="sc_catalogsLIKEe6ac5bfddb733200e5c755d0cf961988^category=67b051e3dbb33200e5c755d0cf9619a3^EQ" type="reference"/>

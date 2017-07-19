@@ -5,7 +5,7 @@
         <active>true</active>
         <client>false</client>
         <comments/>
-        <condition/>
+        <condition>new recommendUtils(current.sys_id).existsCheck()</condition>
         <form_action>true</form_action>
         <form_button>true</form_button>
         <form_context_menu>false</form_context_menu>
@@ -67,7 +67,7 @@ action.setRedirectURL(current);]]></script>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>7bea8db4dba33200e5c755d0cf9619f5</sys_id>
-        <sys_mod_count>62</sys_mod_count>
+        <sys_mod_count>63</sys_mod_count>
         <sys_name>Recommend</sys_name>
         <sys_overrides/>
         <sys_package display_value="Mod List" source="x_134426_mod_list">2f7f9f0fdbd33200e5c755d0cf961978</sys_package>
@@ -76,7 +76,7 @@ action.setRedirectURL(current);]]></script>
         <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
         <sys_update_name>sys_ui_action_7bea8db4dba33200e5c755d0cf9619f5</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-07-07 17:48:11</sys_updated_on>
+        <sys_updated_on>2017-07-18 19:04:34</sys_updated_on>
         <table>x_134426_mod_list_all_mods</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>false</ui16_compatible>
