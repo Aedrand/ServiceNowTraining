@@ -13,24 +13,11 @@
 				checked.push(chb.value);
 			}
 		});
-		//Stringify array for passing through Ajax.
-		var itemString = JSON.stringify(checked);
-		//Create GlideAjax, passing in parameters.
-		var redirectString = '?id=sc_cart&sys_id=' + cartID;
-		var ajax = new GlideAjax('RecommendedHardwareUtil');
-		//console.log(ajax);
-		ajax.addParam('sysparm_name','populateCart');   //Function to call in SI.
-		ajax.addParam('sysparm_cartID',cartID);   //Target cart record sys_id.
-		ajax.addParam('sysparm_itemString',itemString);   //Stringified array of checked items.
-		ajax.addParam('sysparm_redirect', redirectString);   //Redirect url.
-		ajax.getXML(ajaxResult);   //Returns redirect value.
-		//Callback function. Redirects to redirect value.
-		function ajaxResult(result) {
-			console.log(result);
-			//var redirect = result.responseXML.documentElement.getAttribute("answer");
-			//console.log(redirect);
-			//window.location.replace(redirect);
-		}
+		
+		$scope.data.checked = checked;
+		c.server.update();
+		console.log($scope.data.checked);
+		window.location.assign('?id=sc_cart');
 	}
 }]]></client_script>
         <controller_as>c</controller_as>
@@ -49,46 +36,82 @@
         <public>false</public>
         <roles/>
         <script><![CDATA[(function() {
-	var targetProgram = new GlideRecord('x_134426_mod_list_all_programs');
-	targetProgram.get($sp.getParameter('sys_id'));
 	
-	var guideRecord = targetProgram.recommended_hardware.getRefRecord();
-	data.guideName = guideRecord.getValue('name');
+	data.checked = [];
 	
-	var rulesRecord = new GlideRecord('sc_cat_item_guide_items');
-	rulesRecord.get('guide', guideRecord.sys_id);
-	
-	var queryString = rulesRecord.getValue('item');
-	while(rulesRecord.next()) {
-		queryString += ',' + rulesRecord.getValue('item');
-	}
-	
-	var itemsRecord = new GlideRecord(rulesRecord.item.getRefRecord().getTableName());
-	itemsRecord.addQuery('sys_id','IN', queryString);
-	itemsRecord.query();
-	
-	data.items = [];
-	
-	while(itemsRecord.next()) {
-		var currentItem = {};
-		currentItem.name = itemsRecord.getValue('sys_name');
-		currentItem.id = itemsRecord.getValue('sys_id');
-		currentItem.link = '?id=sc_cat_item&sys_id=' + 
-			itemsRecord.getValue('sys_id');
-		data.items.push(currentItem);
-	}
-	
+	//Obtain the user's cart record.
 	var cartRecord = new GlideRecord('sc_cart');
-			cartRecord.addQuery('user', gs.getUserID());
-			cartRecord.query();
-			if(!cartRecord.next()){
-				cartRecord.initialize();
-				cartRecord.user = gs.getUserID();
-				cartRecord.insert();
-			}
-	
+	cartRecord.addQuery('user', gs.getUserID());
+	cartRecord.query();
+	//If the cart does not exist, create it. 
+	if(!cartRecord.next()){
+		cartRecord.initialize();
+		cartRecord.user = gs.getUserID();
+		cartRecord.insert();
+	}
+	//Send cart sys_id to data attribute.
 	data.cartID = cartRecord.getValue('sys_id');
-
+	
+	if(input) {
+		data.checked = input.checked;
+		clearCart(data.cartID);
+		//Populate the cart with the passed requested items.
+		
+		for(var i=0; i < data.checked.length; i++) {
+			addItem(data.cartID, data.checked[i], 1);
+		}
+	}
+	else {
+		//Obtain target program record.
+		var targetProgram = new GlideRecord('x_134426_mod_list_all_programs');
+		targetProgram.get($sp.getParameter('sys_id'));
+		//Obtain the record of the program's order guide.
+		var guideRecord = targetProgram.recommended_hardware.getRefRecord();
+		data.guideName = guideRecord.getValue('name');
+		//Obtain the guide rules belonging to the guide.
+		var rulesRecord = new GlideRecord('sc_cat_item_guide_items');
+		rulesRecord.get('guide', guideRecord.sys_id);
+		//Create a string that contains the sys_ids of all guide rules,
+		//seperated by commas.
+		var queryString = rulesRecord.getValue('item');
+		while(rulesRecord.next()) {
+			queryString += ',' + rulesRecord.getValue('item');
+		}
+		//Find items in guide using IN query and the query string.
+		var itemsRecord = new GlideRecord(rulesRecord.item.getRefRecord().getTableName());
+		itemsRecord.addQuery('sys_id','IN', queryString);
+		itemsRecord.query();
+		//Create array to store record values.
+		data.items = [];
+		//Iterate through records and assign values.
+		while(itemsRecord.next()) {
+			//Create variable at the beginning of each iteration to assign
+			//values into.
+			var currentItem = {};
+			currentItem.name = itemsRecord.getValue('sys_name');
+			currentItem.id = itemsRecord.getValue('sys_id');
+			currentItem.link = '?id=sc_cat_item&sys_id=' + 
+				itemsRecord.getValue('sys_id');
+			//Push variable to items array.
+			data.items.push(currentItem);
+		}
+	}
+	
+	//Clears the passed cart. Takes in cart sys_ID.
+		function clearCart(cartid) {
+			var items = new GlideRecord('sc_cart_item');
+			items.addQuery('cart', cartid);
+			items.deleteMultiple();
+		}
+	//Adds the passed item to the cart. Takes in the cart sys_ID, item sys_ID, and quantity.
+		function addItem(cartid, itemid, quantity) {
+			var item = new GlideRecord('sc_cart_item');
+			item.initialize();
+			item.cart = cartid;
+			item.cat_item = itemid;
+			item.quantity = quantity;
+			item.insert();
+		}
 })();]]></script>
         <servicenow>false</servicenow>
         <sys_class_name>sp_widget</sys_class_name>
@@ -96,7 +119,7 @@
         <sys_created_on>2017-07-18 21:31:41</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>3f5fa02ddbc00300e5c755d0cf961942</sys_id>
-        <sys_mod_count>30</sys_mod_count>
+        <sys_mod_count>60</sys_mod_count>
         <sys_name>Recommended Hardware</sys_name>
         <sys_package display_value="Mod List" source="x_134426_mod_list">2f7f9f0fdbd33200e5c755d0cf961978</sys_package>
         <sys_policy/>
@@ -104,20 +127,24 @@
         <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
         <sys_update_name>sp_widget_3f5fa02ddbc00300e5c755d0cf961942</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-07-19 15:33:44</sys_updated_on>
+        <sys_updated_on>2017-07-19 19:55:30</sys_updated_on>
         <template><![CDATA[<div>
   <div>
     <h2>Recommended Hardware</h2>
 		<h4>{{data.guideName}}</h4>
+    <hr>
 		<!--List recommended hardware and create input checkboxes for each entry.-->
 		<div class="rHardwareList">
     	<div class="hardwareItem" ng-repeat="r in data.items">
       	<input type="checkbox" name="requested" value="{{r.id}}"/>
         <a href="{{r.link}}">{{r.name}}</a>
       </div>
-    </div>	
+    </div>
+    <br>
 		<!--Submit button.-->
-		<input type="button" id="requestButton" ng-click="submitRequest(data.cartID)" value="Request Checked Hardware"/>
+    <div class="submitButton">
+      <input type="button" id="requestButton" ng-click="submitRequest(data.cartID)" value="Request Checked Hardware"/>
+    </div>
 	</div>
 </div>]]></template>
     </sp_widget>

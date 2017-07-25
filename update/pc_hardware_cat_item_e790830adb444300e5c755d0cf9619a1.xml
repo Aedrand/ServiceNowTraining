@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="pc_hardware_cat_item">
+    <pc_hardware_cat_item action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <auto_created>true</auto_created>
+        <availability>on_desktop</availability>
+        <billable>false</billable>
+        <category display_value="Hardware Assets">ddda2b75dbb33200e5c755d0cf9619ab</category>
+        <cost>871.99</cost>
+        <custom_cart/>
+        <delivery_plan/>
+        <delivery_plan_script/>
+        <delivery_time>1970-01-03 00:00:00</delivery_time>
+        <description><![CDATA[
+<p></p>
+<h3>OptiPlex 990 MT i5-2400 4GB 500GB DVDRW W7P 64-Bit AMD GFX 512MB 3-Year</h3>
+<ul><li>Product Type: Desktop Computer</li><li>Processor Core: Quad-core (4 Core)</li><li>Green Compliant: Yes</li><li>Green Compliance Certificate/Authority: WEEE</li><li>64-bit Processing: Yes</li><li>Processor Manufacturer: Intel</li><li>Chipset Manufacturer: Intel</li><li>Chipset Model: Q67 Express</li><li>Graphics Controller Manufacturer: AMD</li><li>Graphics Controller Model: Radeon HD 6350</li><li>Number of Total Memory Slots: 4</li><li>Optical Drive Type: DVD-Writer</li><li>Optical Media Supported: DVDR/RW</li><li>Graphics Memory Capacity: 512 MB</li><li>Number of Processors Supported: 1</li><li>Number of Processors Installed: 1</li><li>Hyper-Threading: No</li><li>Total Hard Drive Capacity: 500 GB</li><li>Ethernet Technology Gigabit: Ethernet</li><li>DVI: Yes</li><li>DisplayPort: Yes</li><li>Operating System Architecture: 64-bit</li></ul>
+<p></p>
+]]></description>
+        <entitlement_script/>
+        <features/>
+        <group/>
+        <icon/>
+        <ignore_price>false</ignore_price>
+        <image/>
+        <list_price>0</list_price>
+        <location/>
+        <meta/>
+        <mobile_hide_price>false</mobile_hide_price>
+        <mobile_picture/>
+        <mobile_picture_type>use_desktop_picture</mobile_picture_type>
+        <model display_value="Dell Inc. OptiPlex 469">0c43b887c611227501522de205b89e23</model>
+        <name>OptiPlex 469</name>
+        <no_cart>false</no_cart>
+        <no_order>false</no_order>
+        <no_order_now>false</no_order_now>
+        <no_proceed_checkout>false</no_proceed_checkout>
+        <no_quantity>false</no_quantity>
+        <no_search>false</no_search>
+        <omit_price>false</omit_price>
+        <order>0</order>
+        <ordered_item_link/>
+        <picture/>
+        <preview>JavaScript: popupOpenStandard("./com.glideapp.servicecatalog_cat_item_view.do?v=1&amp;sysparm_id=e790830adb444300e5c755d0cf9619a1&amp;sysparm_preview=true", "summary");</preview>
+        <price>871.99</price>
+        <product_id>469-0237</product_id>
+        <recurring_frequency/>
+        <recurring_price>0</recurring_price>
+        <roles/>
+        <sc_catalogs>e6ac5bfddb733200e5c755d0cf961988</sc_catalogs>
+        <sc_ic_item_staging/>
+        <sc_ic_version/>
+        <short_description>Dell - OptiPlex 469-0237 Desktop Computer - Intel Core i5 i5-2400 3.10 GHz - Mini-tower</short_description>
+        <show_variable_help_on_load>false</show_variable_help_on_load>
+        <specs/>
+        <start_closed>false</start_closed>
+        <sys_class_name>pc_hardware_cat_item</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-07-20 21:23:15</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>e790830adb444300e5c755d0cf9619a1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>OptiPlex 469</sys_name>
+        <sys_package display_value="Mod List" source="x_134426_mod_list">2f7f9f0fdbd33200e5c755d0cf961978</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
+        <sys_update_name>pc_hardware_cat_item_e790830adb444300e5c755d0cf9619a1</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-07-20 21:23:15</sys_updated_on>
+        <template/>
+        <type>item</type>
+        <upc/>
+        <use_sc_layout>true</use_sc_layout>
+        <vendor/>
+        <vendor_catalog_item/>
+        <visible_bundle>true</visible_bundle>
+        <visible_guide>true</visible_guide>
+        <visible_standalone>true</visible_standalone>
+        <workflow/>
+    </pc_hardware_cat_item>
+    <sys_translated_text action="delete_multiple" query="documentkey=e790830adb444300e5c755d0cf9619a1"/>
+    <fx_price action="delete_multiple" query="id=e790830adb444300e5c755d0cf9619a1"/>
+    <fx_price action="INSERT_OR_UPDATE">
+        <amount>871.99</amount>
+        <currency display_value="USD">USD</currency>
+        <field>price</field>
+        <id>e790830adb444300e5c755d0cf9619a1</id>
+        <parent/>
+        <reference_amount>871.99</reference_amount>
+        <reference_currency display_value="USD">USD</reference_currency>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-07-20 21:23:15</sys_created_on>
+        <sys_id>2b90830adb444300e5c755d0cf9619a2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-07-20 21:23:15</sys_updated_on>
+        <table>pc_hardware_cat_item</table>
+        <type>calculated</type>
+    </fx_price>
+    <fx_price action="INSERT_OR_UPDATE">
+        <amount>0</amount>
+        <currency display_value="USD">USD</currency>
+        <field>recurring_price</field>
+        <id>e790830adb444300e5c755d0cf9619a1</id>
+        <parent/>
+        <reference_amount>0</reference_amount>
+        <reference_currency display_value="USD">USD</reference_currency>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-07-20 21:23:15</sys_created_on>
+        <sys_id>6390830adb444300e5c755d0cf9619a3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-07-20 21:23:15</sys_updated_on>
+        <table>pc_hardware_cat_item</table>
+        <type>calculated</type>
+    </fx_price>
+</record_update>

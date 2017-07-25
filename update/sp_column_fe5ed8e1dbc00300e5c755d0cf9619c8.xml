@@ -2,7 +2,7 @@
 <record_update table="sp_column">
     <sp_column action="INSERT_OR_UPDATE">
         <class_name/>
-        <order>1</order>
+        <order>2</order>
         <size>6</size>
         <size_lg/>
         <size_sm/>
@@ -13,14 +13,14 @@
         <sys_created_on>2017-07-18 20:17:21</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>fe5ed8e1dbc00300e5c755d0cf9619c8</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_name>1</sys_name>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>2</sys_name>
         <sys_package display_value="Mod List" source="x_134426_mod_list">2f7f9f0fdbd33200e5c755d0cf961978</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
         <sys_update_name>sp_column_fe5ed8e1dbc00300e5c755d0cf9619c8</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-07-18 20:17:21</sys_updated_on>
+        <sys_updated_on>2017-07-24 21:15:37</sys_updated_on>
     </sp_column>
 </record_update>

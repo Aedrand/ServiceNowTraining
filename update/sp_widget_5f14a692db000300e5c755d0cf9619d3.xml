@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <client_script><![CDATA[function() {  /* widget controller */  var c = this;}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.formHead {
+	margin:5px;
+  display:flex;
+  flex-flow: row wrap;
+}
+
+.formBody {
+	margin:5px;
+  display:flex;
+  flex-flow: row wrap;
+}
+
+.contentBlock {
+	flex: 1 50%;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>asset_request_form</id>
+        <internal>false</internal>
+        <link/>
+        <name>Asset Request Form</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	//Function to compose a more readable date string.
+	//Takes in a date string in YY-MM-DD hh:mm:ss
+	function formatDate(dateString) {
+		var date = new GlideDateTime(dateString);
+		var formatted = date.getMonthLocalTime()+'/'+
+				date.getDayOfMonthLocalTime()+'/'+
+				date.getYearLocalTime();
+		return formatted;
+	}
+	
+	//Get request sys_id from uri, and find record.
+	var reqID = $sp.getParameter('sys_id');
+	var request = new GlideRecord('sc_request');
+	request.get(reqID);
+	
+	//Populate data based on request values.
+	data.reqNum = request.getValue('number');
+	data.reqFor = request.requested_for.getDisplayValue();
+	data.openBy = request.opened_by.getDisplayValue();
+	data.dueDate = formatDate(request.due_date.getDisplayValue());
+	data.openDate = formatDate(request.opened_at.getDisplayValue());
+	data.description = request.getValue('description');
+	data.shortDesc = request.getValue('short_description');
+	data.specInstruc = request.getValue('special_instructions');
+	
+	//Get item display widget.
+	//(TODO: Rename widget to something that makes more sense.)
+	data.itemWidget = $sp.getWidget('asset_transfer_request');
+	
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-07-21 13:57:11</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>5f14a692db000300e5c755d0cf9619d3</sys_id>
+        <sys_mod_count>50</sys_mod_count>
+        <sys_name>Asset Request Form</sys_name>
+        <sys_package display_value="Mod List" source="x_134426_mod_list">2f7f9f0fdbd33200e5c755d0cf961978</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
+        <sys_update_name>sp_widget_5f14a692db000300e5c755d0cf9619d3</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-07-25 13:48:42</sys_updated_on>
+        <template><![CDATA[<!--Outer container of request form.-->
+<div class="outerShell">
+  
+  <!--Header of form, displays item number.-->
+  <div class="headShell">
+    <span>{{data.reqNum}}</span>
+  </div>
+  
+  <!--Primary form information.-->
+  <div class="formHead">
+    <h3 style="font-size:25px; flex: 1 50%">
+      Request For {{data.reqFor}}
+    </h3>
+    <p style="flex: 1 auto; text-align:right; font-size: 13px; color: #b3b3b3">
+      Opened by {{data.openBy}} on {{data.openDate}}
+    </p>
+  </div>
+  
+  <!--Additional form information.-->
+  <div class="formBody">
+    <hr style="flex: 1 100%; margin-top:0px; margin-bottom: 5px;">
+    
+    <!--Due date and short description block.-->
+    <div class="contentBlock">
+      <h4 style="margin:0px;">Due Date</h4>
+      <p ng-if="!data.dueDate" style="color: #b3b3b3">
+        -None Provided-
+      </p>
+      <p>{{data.dueDate}}</p>
+      <h4 style="margin:0px;">Short Description</h4>
+      <p ng-if="!data.shortDesc" style="color: #b3b3b3">
+        -None Provided-
+      </p>
+      <p>{{data.shortDesc}}</p>
+    </div>
+    
+    <!--Special instructions block.-->
+    <div class="contentBlock">
+      <h4 style="margin:0px;">Special Instructions</h4>
+      <p ng-if="!data.specInstruc" style="color: #b3b3b3">
+        -None Provided-
+      </p>
+      <p ng-if="data.specInstruc">{{data.specInstruc}}</p>
+    </div>
+    
+    <!--Full description block.-->
+    <div class="contentBlock">
+    	<h4 style="margin:0px;">Full Description</h4>
+      <p ng-if="!data.description" style="color: #b3b3b3">
+        -None Provided-
+      </p>
+      <p>{{data.description}}</p>
+    </div>
+    
+  	<hr style="flex: 1 100%; margin:0px;">
+  </div>
+  
+  <!--Requested items widget.-->
+  <sp-widget widget="data.itemWidget"/>
+  
+</div>]]></template>
+    </sp_widget>
+</record_update>

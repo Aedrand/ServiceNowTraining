@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <client_script><![CDATA[function($scope, $location, $anchorScroll) {
+  /* widget controller */
+  var c = this;
+	//Show|Hide functionality.
+	$scope.showItem = function(index) {
+		//Hide all items that are not the clicked item.
+		for(var i=0; i<$scope.data.reqItems.length; i++) {
+			if(i != index) {
+				$scope.data.reqItems[i].showRecord = false;
+			}
+		}
+		//If the clicked item is hidden, show it.
+		if($scope.data.reqItems[index].showRecord == false) {
+			$scope.data.reqItems[index].showRecord = true;
+		}
+		//If the clicked item is shown, hide it.
+		else {
+			$scope.data.reqItems[index].showRecord = false;
+			$scope.data.itemIndex = index;
+		}
+	}
+	//Accept|Reject functionality
+	$scope.acceptItem = function(acceptBool, index) {
+		//Pass the acceptance bool and index to server.
+		$scope.data.acceptResponse = acceptBool;
+		$scope.data.itemIndex = index;
+		//Update server.
+		c.server.update();
+	}
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.contentShell {
+	border: 1px solid #ddd;
+  border-radius:3px;
+  margin:5px;
+}
+
+.itemShell {
+	display:flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+}
+
+.itemTab {
+  user-select:none;
+	flex:1 100%;
+  display:flex;
+  flex-flow:row wrap;
+  align-content:flex-start;
+}
+
+.itemTab:hover {
+	background-color: #f5f5f5;
+}
+
+.itemHeadShell {
+	flex: 1 60%;
+  margin:5px;
+}
+
+.itemHead {
+	font-size:20px;
+}
+
+.itemStatusShell {
+  flex: 1 auto;
+  min-width:35%;
+  font-size:15px;
+  margin:5px;
+}
+
+.itemRecordShell {
+	flex: 1 100%;
+  background-color:#f5f5f5;
+  padding:6px;
+  display:flex;
+  flex-flow: row wrap;
+  padding-bottom:50px;
+  opacity:1;
+  -webkit-transition: 0.2s linear all; /* Chrome */
+	transition: 0.2s linear all;
+}
+
+.itemRecordShell.ng-hide {
+	-webkit-transition: 0.2s linear all; /* Chrome */
+	transition: 0.2s linear all;
+	opacity: 0;
+}
+
+.itemRecord {
+  flex: 1 70%;
+  border: 1px solid #ddd;
+  border-radius:3px;
+  background-color:white;
+}
+
+.acceptShell {
+	flex: 1 auto;
+  max-height:140px;
+  background-color:white;
+  border: 1px solid #ddd;
+  border-radius:3px;
+}
+
+.itemAccept {
+  display:flex;
+  flex-flow: column wrap;
+  padding:5px;
+}
+
+.approvalStatus {
+  background-color: rgba(38,164,232,0.2);
+  border-radius: 3px;
+  margin:5px;
+}
+
+.approvalStatus.approved {
+	background-color:rgba(92,184,92,0.2)
+}
+
+.approvalStatus.rejected {
+	background-color:rgba(212,63,58,0.2);
+}
+
+.itemBody {
+	display:flex;
+  flex-flow: row wrap;
+  margin:5px;
+}
+
+.contentBody {
+	flex: 1 50%;
+}
+
+.appBtn {
+  flex: 1 auto;
+  max-height: 35px;
+  min-width:200px;
+  margin:5px;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>asset_transfer_request</id>
+        <internal>false</internal>
+        <link/>
+        <name>Asset Transfer Request</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  //Format the given date string to be readable.
+	//Takes in format YYYY-MM-DD hh:mm:ss 
+	function formatDate(dateString) {
+		var date = new GlideDateTime(dateString);
+		var formatted = date.getMonthLocalTime()+'/'+
+				date.getDayOfMonthLocalTime()+'/'+
+				date.getYearLocalTime();
+		return formatted;
+	}
+	
+	data.user = gs.getUserID();
+	
+	//If the server script is being called with input, check which input.
+	if(input) {
+		//If reqItems is defined, move along item show/hide path.
+		if(typeof input.reqItems !== undefined) {
+			data.reqItems = input.reqItems;
+		}
+		//If acceptResponse and itemIndex are defined, move along approval path.
+		if(typeof input.acceptResponse !== undefined && 
+			 typeof input.itemIndex !== undefined) {
+			//Get the approval record using the index of the requested item.
+			var appRecord = new GlideRecord('sysapproval_approver');
+			appRecord.get(data.reqItems[input.itemIndex].approval.sys_id);
+			//If the item has been approved, update page and corresponding record.
+			if(input.acceptResponse) {
+				data.reqItems[input.itemIndex].approval.state = 'Approved';
+				appRecord.setValue('state', 'approved');
+				appRecord.update();
+			}
+			//Do the same if the item has been rejected.
+			else {
+				data.reqItems[input.itemIndex].approval.state = 'Rejected';
+				appRecord.setValue('state', 'rejected');
+				appRecord.update();
+			}
+		}
+	}
+	//Server script is being run without input, page is being loaded.
+	else {
+		//Get request from uri parameter.
+		var reqID = $sp.getParameter('sys_id');
+		var request = new GlideRecord('sc_request');
+		request.get(reqID);
+		//Assign request-related data values.
+		data.request = request;
+		data.reqNum = request.getValue('number');
+		data.reqFor = request.requested_for.getDisplayValue();
+		//Get the requested item records for the request.
+		var reqIts = new GlideRecord('sc_req_item');
+		reqIts.addQuery('request', reqID);
+		reqIts.query();
+		
+		data.reqItems = [];   //Data array to store item data in.
+		
+		//Populate item data array.
+		while(reqIts.next()) {
+			//Create item object to store data in array.
+			var item = {};
+			//Convert stage to displayable syntax.
+			var stageString = reqIts.stage.getDisplayValue();
+			var first = stageString.charAt(0).toUpperCase();
+			//Populate item with item-related data.
+			item.item = reqIts.cat_item.getDisplayValue();
+			item.number = reqIts.getValue('number');
+			item.stage = first + stageString.slice(1);
+			item.state = reqIts.state.getDisplayValue();
+			item.dueDate = formatDate(reqIts.getValue('due_date'));
+			item.openDate = formatDate(reqIts.getValue('opened_at'));
+			item.openedBy= reqIts.opened_by.getDisplayValue();
+			item.openedByLink = reqIts.opened_by.getRefRecord().getLink(true);
+			item.price = reqIts.getValue('price');
+			item.priority = reqIts.priority.getDisplayValue();
+			item.quantity = reqIts.getValue('quantity');
+			item.showRecord = false;
+			item.totalCost = item.price * item.quantity;
+			//Get approval record for requested item.
+			var approval = new GlideRecord('sysapproval_approver');
+			approval.get('document_id', reqIts.getValue('sys_id'));
+			//Create approval subobject to store approval-related data.
+			item.approval = {};
+			var appString = approval.getValue('state');
+			var appFirst = appString.charAt(0).toUpperCase();
+			item.approval.state = appFirst + appString.slice(1); 
+			item.approval.user = {};
+			item.approval.user.name = approval.approver.getDisplayValue();
+			item.approval.user.id = approval.getValue('approver');
+			item.approval.sys_id = approval.getValue('sys_id');
+			item.approval.comments = approval.getValue('comments');
+			
+			//Define widget parameteres for activity feed widget.
+			var ticketConversationOptions = {
+				sys_id: approval.getUniqueValue(),
+				table: approval.getTableName(),
+				title: gs.getMessage("Activity Stream"),
+				placeholder: gs.getMessage("Type your message here..."),
+				placeholderNoEntries: gs.getMessage("Start a conversation..."),
+				btnLabel: gs.getMessage("Send")
+			};
+			//Get activity feed widget.
+			item.ticketConversation = $sp.getWidget('widget-ticket-conversation', 
+																							ticketConversationOptions);
+
+			//Add completed item object to data array.
+			data.reqItems.push(item);
+		} 
+		
+		//Assign total cost variable.
+		data.costTotal = request.getValue('price');
+		
+	}
+	
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-07-19 20:14:02</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>b727ad71db0c0300e5c755d0cf961927</sys_id>
+        <sys_mod_count>311</sys_mod_count>
+        <sys_name>Asset Transfer Request</sys_name>
+        <sys_package display_value="Mod List" source="x_134426_mod_list">2f7f9f0fdbd33200e5c755d0cf961978</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
+        <sys_update_name>sp_widget_b727ad71db0c0300e5c755d0cf961927</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-07-25 18:23:20</sys_updated_on>
+        <template><![CDATA[<!--Item List for sc_request. Requires sc_request sys_id in uri.-->
+<div class="outerShell">
+  <p style="font-size:25px; margin:5px;">
+    Items
+  </p>
+  
+  <div class="contentShell">
+    <!--Main repeating div. Contains all item-specific information.-->
+    <div id="item{{$index}}" class="itemShell" ng-repeat="r in data.reqItems">
+      
+      <div class="itemTab">
+      	<!--Item header and subtitle-->
+    		<div class="itemHeadShell" ng-click="showItem($index)">
+      		<div class="itemHead">
+        		{{r.item}}
+      		</div>
+      		<div class="itemHeadSub">
+        		Ordered {{r.quantity}}<br>
+        		Opened By {{r.openedBy}} On {{r.openDate}}
+      		</div>
+    		</div>
+      
+    		<!--Additional on-glance item information-->
+    		<div class="itemStatusShell" ng-click="showItem($index)">
+      		<div class="itemStatusLeft" style="text-align:start; float:left">
+        		Item Price
+      		</div>
+      		<div class="itemStatusRight" style="text-align:end; float:right">
+        		${{r.totalCost}}
+      		</div>
+    		</div>
+      </div>
+    
+    	<hr style="flex: 1 100%; margin:0px;">
+    
+    	<!--Additional item information and acceptance controls.-->
+    	<div id="itRecord{{$index}}" class="itemRecordShell" ng-show="r.showRecord">
+        
+      	<!--Additional item information.-->
+      	<div class="itemRecord">
+        	<div class="headShell">
+          	{{r.number}}  
+        	</div>
+        	<div class="approvalStatus">
+          	<p style="font-size:20px; text-align:center">
+            	{{r.approval.state}}
+          	</p>
+        	</div>
+          
+        	<!--Information main body.-->
+        	<div class="itemBody">
+            
+          	<div class="contentBody">
+            	<h4 style="margin:0px;">Opened By</h4>
+            	<p>{{r.openedBy}}</p>
+            	<h4 style="margin:0px;">Due Date</h4>
+            	<p>{{r.dueDate}}</p>
+          	</div>
+              
+          	<div class="contentBody">
+            	<h4 style="margin:0px;">Priority</h4>
+            	<p>{{r.priority}}</p>
+          	</div>
+            
+          	<hr style="flex: 1 100%;">
+          	<div class="contentBody" style="text-align:right">
+            	<h4 style="margin:0px;">Price Breakdown</h4>
+            	<p>{{r.quantity}} x ${{r.price}} each = ${{r.totalCost}}</p>
+          	</div>
+            
+        	</div>
+        	<sp-widget widget="r.ticketConversation"/>
+          
+      	</div>
+        
+      	<!--Acceptance controls for item.-->
+      	<div ng-if="r.approval.state == 'Requested' && r.approval.user.id == data.user" class="acceptShell">
+        	<div class="headShell">
+          	Accept/Reject<br>
+        	</div>
+          
+        	<div class="itemAccept">
+          	<div class="btn btn-success appBtn" ng-click="acceptItem(true, $index)">
+           	 Accept
+          	</div>
+          	<div class="btn btn-danger appBtn" ng-click="acceptItem(false, $index)">
+            	Reject
+          	</div>
+        	</div>
+          
+      	</div>
+    
+    	</div>
+    
+    </div>
+    
+    <hr style="margin-bottom:0px;">
+    <!--Total cost of request.-->
+    <p style="text-align:right;font-size:20px; margin:5px;">
+      Total Cost ${{data.costTotal}}
+    </p>
+    
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>

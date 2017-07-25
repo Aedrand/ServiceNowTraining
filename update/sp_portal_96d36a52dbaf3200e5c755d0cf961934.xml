@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update table="sp_portal">
     <sp_portal action="INSERT_OR_UPDATE">
-        <css_variables/>
+        <css_variables>.outerShell {&#13;
+	border:1px solid #ddd;&#13;
+  border-radius: 4px;&#13;
+}&#13;
+&#13;
+.headShell {&#13;
+	border-bottom: 1px solid #ddd;&#13;
+  font-size: 20px;&#13;
+  padding:5px;&#13;
+  background-color: #f5f5f5;&#13;
+  color:#3a3f51;&#13;
+  border-radius:3px;&#13;
+}</css_variables>
         <default>true</default>
         <homepage display_value="home_page">d8142252dbaf3200e5c755d0cf96194a</homepage>
         <icon/>
@@ -11,7 +23,7 @@
         <logo/>
         <notfound_page/>
         <quick_start_config/>
-        <sc_catalog/>
+        <sc_catalog display_value="Asset Transfer">e6ac5bfddb733200e5c755d0cf961988</sc_catalog>
         <sc_catalog_page/>
         <sp_chat_queue/>
         <sp_rectangle_menu display_value="Navigation">473836a2db233200e5c755d0cf961971</sp_rectangle_menu>
@@ -21,7 +33,7 @@
         <sys_created_on>2017-06-26 17:24:52</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>96d36a52dbaf3200e5c755d0cf961934</sys_id>
-        <sys_mod_count>36</sys_mod_count>
+        <sys_mod_count>38</sys_mod_count>
         <sys_name>Modification List</sys_name>
         <sys_package display_value="Mod List" source="x_134426_mod_list">2f7f9f0fdbd33200e5c755d0cf961978</sys_package>
         <sys_policy/>
@@ -29,7 +41,7 @@
         <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
         <sys_update_name>sp_portal_96d36a52dbaf3200e5c755d0cf961934</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-06-30 13:24:29</sys_updated_on>
+        <sys_updated_on>2017-07-25 13:45:21</sys_updated_on>
         <theme/>
         <title>Modification List</title>
         <url_suffix>modlist</url_suffix>

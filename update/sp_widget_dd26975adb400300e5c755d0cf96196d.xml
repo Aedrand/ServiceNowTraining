@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <client_script><![CDATA[function($scope) {
+  /* widget controller */
+  var c = this;
+	//Redirect to chosen record on click.
+	$scope.goToRecord = function(sysid) {
+		window.location.assign('?id=asset_request&sys_id='+
+													sysid);
+	}
+	
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.bodyShell {
+  padding-bottom:10px;
+}
+
+.bodyContent:hover {
+	background-color: #f5f5f5;
+}
+
+th, td {
+	padding:5px;
+  border:1px solid #ddd;
+  border-radius: 3px;
+}
+
+//Hide short description in limited screen space.
+@media only screen and (max-width: 650px) {
+    .mobileHide {
+        display: none;
+    }
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>request_approvals</id>
+        <internal>false</internal>
+        <link/>
+        <name>Request Approvals</name>
+        <option_schema>[{"hint":"Choose table functionality.","name":"table_function","default_value":"My Requests","label":"Table Function","type":"choice","choices":[{"label":"My Requests","value":"My Requests"},{"label":"My Approvals","value":"My Approvals"}]}]</option_schema>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	
+	//Function to check if a request sys_id has already been added.
+	function isUnique(sysid, ids) {
+		for(var i=0; i < ids.length; i++) {
+			if(sysid == ids[i].sys_id) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	switch(options.table_function) {
+		case 'My Approvals':
+			
+			data.title = "Requests Awaiting Your Approval";
+			
+			//Get all active approvals for the current user.
+			var approvalRecord = new GlideRecord('sysapproval_approver');
+			approvalRecord.addQuery('approver', gs.getUserID());
+			approvalRecord.addQuery('state', 'requested');
+			approvalRecord.query();
+			//Create entries array to hold records.
+			data.entries = [];
+
+			//Populate entries array using entry var.
+			while(approvalRecord.next()) {
+				if(isUnique(approvalRecord.sysapproval.request.getRefRecord().getValue('sys_id'), data.entries)) {
+					var entry = {};
+					var requestRecord = approvalRecord.sysapproval.request.getRefRecord();
+					entry.sys_id = requestRecord.getUniqueValue();
+					entry.number = requestRecord.getValue('number');
+					entry.requested_for = requestRecord.requested_for.getDisplayValue();
+					entry.short_description = requestRecord.getValue('short_description');
+					entry.priority = requestRecord.priority.getDisplayValue();
+					entry.price = requestRecord.getValue('price');
+					data.entries.push(entry);	
+				}
+			}
+			break;
+			
+		case 'My Requests':
+			
+			data.title = "My Hardware Requests";
+			
+			var myRequests = new GlideRecord('sc_request');
+			myRequests.addQuery('requested_for', gs.getUserID());
+			myRequests.query();
+			
+			data.entries = [];
+			
+			while(myRequests.next()) {
+				var req = {};
+				req.sys_id = myRequests.getUniqueValue();
+				req.number = myRequests.getValue('number');
+				req.requested_for = myRequests.requested_for.getDisplayValue();
+				req.short_description = myRequests.getValue('short_description');
+				req.priority = myRequests.priority.getDisplayValue();
+				req.price = myRequests.getValue('price');
+				data.entries.push(req);	
+			}
+	}
+	
+	//If there are no entries, set hasVals flag to false. Signals
+	//to html that there are no values.
+	if(data.entries.length <= 0) {
+		data.hasVals = false;
+	}
+	//If there are entries, set hasVals flag to true. Signals to
+	//html that there are values to display.
+	else {
+		data.hasVals = true;
+	}
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-07-21 17:35:47</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>dd26975adb400300e5c755d0cf96196d</sys_id>
+        <sys_mod_count>72</sys_mod_count>
+        <sys_name>Request Approvals</sys_name>
+        <sys_package display_value="Mod List" source="x_134426_mod_list">2f7f9f0fdbd33200e5c755d0cf961978</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
+        <sys_update_name>sp_widget_dd26975adb400300e5c755d0cf96196d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-07-25 15:32:01</sys_updated_on>
+        <template><![CDATA[<!--Outer container.-->
+<div class="outerShell">
+  <!--Header for the form.-->
+  <div class="headShell">
+    {{data.title}}
+  </div>
+  
+  <!--Main content container.-->
+  <div class="bodyShell">
+    <!--Main content.-->
+    <table class="bodyTable" ng-if="data.hasVals" style="width:100%">
+      <!--Set up table headers.-->
+      <tr>
+        <th>Number</th>
+        <th>Priority</th>
+        <th>Requested For</th>
+        <th class="mobileHide">Short Description</th>
+        <th>Price</th>
+      </tr>
+      <!--Fill in main content.-->
+      <tr class="bodyContent" ng-repeat="r in data.entries" ng-click="goToRecord(r.sys_id)">
+        <td>{{r.number}}</td>
+        <td>{{r.priority}}</td>
+        <td>{{r.requested_for}}</td>
+        <td class="mobileHide">{{r.short_description}}</td>
+        <td>{{r.price}}</td>
+      </tr>
+    </table>
+    
+    <!--If there are no values to display, show user message saying such.-->
+    <div ng-if="!data.hasVals">
+      <p style="text-align:center; font-size:25px; color: #b3b3b3">
+        No Requests
+      </p>
+    </div>
+  </div>
+</div>]]></template>
+    </sp_widget>
+</record_update>
