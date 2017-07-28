@@ -7,43 +7,50 @@
         <default_operation_uri/>
         <enforce_acl/>
         <http_method>GET</http_method>
-        <name>testProg</name>
+        <name>Program</name>
         <operation_script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
-
-	var queryParams = request.queryParams;
-	var gr = new GlideRecord(queryParams.table[0]);
-	gr.get(queryParams.programid[0]);
 	
-	var body = {};
-	body.gr = gr.name;
+	var queryParams = request.queryParams;
+	
+	var programRecord = new GlideRecord(queryParams.table);
+	programRecord.addQuery('sys_id','IN', queryParams.id.join());
+	programRecord.query();
+	
+	var jsongr = new global.JSONGRg();
+	
+	var body = [];
+	
+	while(programRecord.next()) {
+		body.push(jsongr.encodeGlideRecord(programRecord));
+	}
 	
 	response.setBody(body);
-    // implement resource here
+	
 
 })(request, response);]]></operation_script>
-        <operation_uri>/api/x_134426_mod_list/test/test</operation_uri>
+        <operation_uri>/api/x_134426_mod_list/resources/get</operation_uri>
         <produces>application/json,application/xml,text/xml</produces>
         <produces_customized>false</produces_customized>
-        <relative_path>/test</relative_path>
+        <relative_path>/get</relative_path>
         <request_example/>
         <requires_acl_authorization>false</requires_acl_authorization>
         <requires_authentication>false</requires_authentication>
         <short_description/>
         <sys_class_name>sys_ws_operation</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2017-07-25 15:57:26</sys_created_on>
+        <sys_created_on>2017-07-27 14:48:13</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
-        <sys_id>aae4ab6fdb480300e5c755d0cf9619f0</sys_id>
-        <sys_mod_count>20</sys_mod_count>
-        <sys_name>testProg</sys_name>
+        <sys_id>d709a558db580300e5c755d0cf96195c</sys_id>
+        <sys_mod_count>48</sys_mod_count>
+        <sys_name>Program</sys_name>
         <sys_package display_value="Mod List" source="x_134426_mod_list">2f7f9f0fdbd33200e5c755d0cf961978</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
-        <sys_update_name>sys_ws_operation_aae4ab6fdb480300e5c755d0cf9619f0</sys_update_name>
+        <sys_update_name>sys_ws_operation_d709a558db580300e5c755d0cf96195c</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-07-25 17:32:26</sys_updated_on>
-        <web_service_definition display_value="Test">593cf205db800300e5c755d0cf9619bf</web_service_definition>
+        <sys_updated_on>2017-07-27 21:37:15</sys_updated_on>
+        <web_service_definition display_value="Resources">77d76d18db580300e5c755d0cf96199d</web_service_definition>
         <web_service_version/>
     </sys_ws_operation>
 </record_update>

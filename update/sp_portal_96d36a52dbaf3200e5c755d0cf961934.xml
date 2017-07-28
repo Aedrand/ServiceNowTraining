@@ -17,11 +17,11 @@
         <default>true</default>
         <homepage display_value="home_page">d8142252dbaf3200e5c755d0cf96194a</homepage>
         <icon/>
-        <kb_knowledge_base/>
+        <kb_knowledge_base display_value="ModList Knowledge">800d36e4dbb33200e5c755d0cf9619b9</kb_knowledge_base>
         <kb_knowledge_page/>
         <login_page/>
         <logo/>
-        <notfound_page/>
+        <notfound_page display_value="404">3c2c9063cb11020000f8d856634c9c1f</notfound_page>
         <quick_start_config/>
         <sc_catalog display_value="Asset Transfer">e6ac5bfddb733200e5c755d0cf961988</sc_catalog>
         <sc_catalog_page/>
@@ -33,7 +33,7 @@
         <sys_created_on>2017-06-26 17:24:52</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>96d36a52dbaf3200e5c755d0cf961934</sys_id>
-        <sys_mod_count>38</sys_mod_count>
+        <sys_mod_count>41</sys_mod_count>
         <sys_name>Modification List</sys_name>
         <sys_package display_value="Mod List" source="x_134426_mod_list">2f7f9f0fdbd33200e5c755d0cf961978</sys_package>
         <sys_policy/>
@@ -41,8 +41,8 @@
         <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
         <sys_update_name>sp_portal_96d36a52dbaf3200e5c755d0cf961934</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-07-25 13:45:21</sys_updated_on>
-        <theme/>
+        <sys_updated_on>2017-07-26 13:56:32</sys_updated_on>
+        <theme display_value="ModList Theme">b095e134dbe33200e5c755d0cf961909</theme>
         <title>Modification List</title>
         <url_suffix>modlist</url_suffix>
     </sp_portal>

@@ -69,7 +69,7 @@
   flex: 1 auto;
   min-width:35%;
   font-size:15px;
-  margin:5px;
+  padding:5px;
 }
 
 .itemRecordShell {
@@ -274,7 +274,7 @@
         <sys_created_on>2017-07-19 20:14:02</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>b727ad71db0c0300e5c755d0cf961927</sys_id>
-        <sys_mod_count>311</sys_mod_count>
+        <sys_mod_count>315</sys_mod_count>
         <sys_name>Asset Transfer Request</sys_name>
         <sys_package display_value="Mod List" source="x_134426_mod_list">2f7f9f0fdbd33200e5c755d0cf961978</sys_package>
         <sys_policy/>
@@ -282,9 +282,9 @@
         <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
         <sys_update_name>sp_widget_b727ad71db0c0300e5c755d0cf961927</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-07-25 18:23:20</sys_updated_on>
+        <sys_updated_on>2017-07-26 19:49:34</sys_updated_on>
         <template><![CDATA[<!--Item List for sc_request. Requires sc_request sys_id in uri.-->
-<div class="outerShell">
+<div class=>
   <p style="font-size:25px; margin:5px;">
     Items
   </p>
@@ -314,9 +314,8 @@
         		${{r.totalCost}}
       		</div>
     		</div>
+        <hr style="flex: 1 100%; margin:0px;">
       </div>
-    
-    	<hr style="flex: 1 100%; margin:0px;">
     
     	<!--Additional item information and acceptance controls.-->
     	<div id="itRecord{{$index}}" class="itemRecordShell" ng-show="r.showRecord">
@@ -326,7 +325,20 @@
         	<div class="headShell">
           	{{r.number}}  
         	</div>
-        	<div class="approvalStatus">
+        	<!--Approval state is Requested.-->
+          <div class="approvalStatus" ng-if="r.approval.state == 'Requested'">
+          	<p style="font-size:20px; text-align:center">
+            	{{r.approval.state}}
+          	</p>
+        	</div>
+          <!--Approval state is Approved.-->
+          <div class="approvalStatus approved" ng-if="r.approval.state == 'Approved'">
+          	<p style="font-size:20px; text-align:center">
+            	{{r.approval.state}}
+          	</p>
+        	</div>
+          <!--Approval state is Rejected.-->
+          <div class="approvalStatus rejected" ng-if="r.approval.state == 'Rejected'">
           	<p style="font-size:20px; text-align:center">
             	{{r.approval.state}}
           	</p>

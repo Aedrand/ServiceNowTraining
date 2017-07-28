@@ -6,8 +6,8 @@
   var c = this;
 	//Redirect to chosen record on click.
 	$scope.goToRecord = function(sysid) {
-		window.location.assign('?id=asset_request&sys_id='+
-													sysid);
+		location.href = '?id=asset_request&sys_id='+
+													sysid;
 	}
 	
 }]]></client_script>
@@ -26,8 +26,21 @@ th, td {
   border-radius: 3px;
 }
 
+td {
+  padding:0px;
+	height:100%;
+}
+
+.itemLink {
+	display:inline-block;
+  color: #717171;
+  width:100%;
+  height:100%;
+  padding:5px;
+}
+
 //Hide short description in limited screen space.
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 767px) {
     .mobileHide {
         display: none;
     }
@@ -126,7 +139,7 @@ th, td {
         <sys_created_on>2017-07-21 17:35:47</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_id>dd26975adb400300e5c755d0cf96196d</sys_id>
-        <sys_mod_count>72</sys_mod_count>
+        <sys_mod_count>104</sys_mod_count>
         <sys_name>Request Approvals</sys_name>
         <sys_package display_value="Mod List" source="x_134426_mod_list">2f7f9f0fdbd33200e5c755d0cf961978</sys_package>
         <sys_policy/>
@@ -134,7 +147,7 @@ th, td {
         <sys_scope display_value="Mod List">2f7f9f0fdbd33200e5c755d0cf961978</sys_scope>
         <sys_update_name>sp_widget_dd26975adb400300e5c755d0cf96196d</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2017-07-25 15:32:01</sys_updated_on>
+        <sys_updated_on>2017-07-26 20:43:23</sys_updated_on>
         <template><![CDATA[<!--Outer container.-->
 <div class="outerShell">
   <!--Header for the form.-->
@@ -155,12 +168,16 @@ th, td {
         <th>Price</th>
       </tr>
       <!--Fill in main content.-->
-      <tr class="bodyContent" ng-repeat="r in data.entries" ng-click="goToRecord(r.sys_id)">
-        <td>{{r.number}}</td>
-        <td>{{r.priority}}</td>
-        <td>{{r.requested_for}}</td>
-        <td class="mobileHide">{{r.short_description}}</td>
-        <td>{{r.price}}</td>
+      <tr class="bodyContent" ng-repeat="r in data.entries">
+        <td>
+          <div style="width:100%; height:100%;">
+            <a class="itemLink" href="?id=asset_request&sys_id={{r.sys_id}}">{{r.number}}</a>
+          </div>
+        </td>
+        <td><a class="itemLink" href="?id=asset_request&sys_id={{r.sys_id}}">{{r.priority}}</a></td>
+        <td><a class="itemLink" href="?id=asset_request&sys_id={{r.sys_id}}">{{r.requested_for}}</a></td>
+        <td class="mobileHide"><a class="itemLink" href="?id=asset_request&sys_id={{r.sys_id}}">{{r.short_description}}</a></td>
+        <td><a class="itemLink" href="?id=asset_request&sys_id={{r.sys_id}}">{{r.price}}</a></td>
       </tr>
     </table>
     
